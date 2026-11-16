@@ -326,6 +326,29 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 .simCel .pct b{display:block;font:800 40px/1 "Barlow Condensed";color:var(--neon)}
 .simCel .pct span{font:700 10px Inter;letter-spacing:1.5px;color:#cfe9ff}
 @media (max-width:860px){.simCel .pct{right:-4%;width:96px;height:96px}.simCel .pct b{font-size:32px}}
+
+/* aba trocando sozinha: parece um toque de dedo */
+.aba.toque{animation:toque .45s ease}
+@keyframes toque{0%{transform:scale(1)}35%{transform:scale(.9);box-shadow:0 0 0 0 rgba(245,184,0,.7)}100%{transform:scale(1);box-shadow:0 0 0 14px rgba(245,184,0,0)}}
+.aba.sim.on.toque{animation:toqueSim .5s ease forwards}
+@keyframes toqueSim{0%{transform:scale(1)}35%{transform:scale(.92)}100%{transform:scale(1.12)}}
+/* selo do acabamento: texto cabendo na bola */
+.simCel .pct span{font-size:8.5px!important;letter-spacing:.6px!important;display:block;margin-top:3px}
+.simCel .pct b{font-size:36px!important}
+.simCel .pct.pula{animation:pulaPct .25s ease}
+@keyframes pulaPct{50%{transform:scale(1.08)}}
+/* "a sua logo" mais na cara */
+.selo-logo{display:inline-flex;align-items:center;gap:10px;margin:14px 0 6px;padding:10px 14px;border-radius:14px;border:1px solid rgba(245,184,0,.45);background:rgba(245,184,0,.08);font-weight:600}
+.selo-logo b{color:var(--gold)}
+/* WhatsApp do curso: treme de vez em quando e tem um celular tocando */
+.btn.zap{gap:10px}
+.btn.zap svg{animation:tocaCel 1.2s ease-in-out infinite}
+@keyframes tocaCel{0%,60%,100%{transform:rotate(0)}10%,30%,50%{transform:rotate(-14deg)}20%,40%{transform:rotate(14deg)}}
+.btn.zap.treme{animation:treme .6s ease}
+@keyframes treme{0%,100%{transform:translateX(0)}15%,55%{transform:translateX(-6px) rotate(-1.5deg)}35%,75%{transform:translateX(6px) rotate(1.5deg)}}
+.btn.zap{box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:zapPulsa 2.2s infinite}
+@keyframes zapPulsa{70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@media (max-width:860px){.sim .w,.vid{grid-template-columns:1fr!important}.mao2{max-width:100%!important}}
 </style>
 </head>
 <body>
@@ -427,6 +450,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
     <span class="eyebrow">O app é seu, com a sua marca</span>
     <h2 class="luzw" style="margin:12px 0 10px">A <span class="gold">SUA logo</span> em tudo.<br>Não a nossa.</h2>
     <p style="font-size:20px;margin:0 0 10px">Seu cliente não vê "Martelinho Pro". Ele vê <b class="gold">a sua oficina</b>: o seu nome, a sua logo, o seu telefone, num orçamento que parece de concessionária.</p>
+    <div class="selo-logo">🛡️ A marca <b>Martelinho Pro</b> não aparece em nada que o seu cliente recebe.</div>
     <p class="mu" style="font-size:18px">É isso que faz o cliente parar de pedir desconto: ele enxerga uma empresa, não um cara com um martelo. E ele aprova na hora, então na entrega o preço já está combinado.</p>
     <div class="passos">
       <div class="passo"><div><b>Toque no carro 3D</b><br><span class="mu">Marque as peças amassadas e quantos amassados tem em cada uma.</span></div></div>
@@ -472,7 +496,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
       <h3 style="margin:10px 0 8px">Quer aprender martelinho de ouro?</h3>
       <p class="mu" style="margin:0">Fale comigo no WhatsApp e eu te explico como começar na profissão, do zero, com o método que eu uso todo dia.</p>
     </div>
-    <a class="btn zap" href="https://wa.me/5537999999921?text=Ol%C3%A1%2C%20Ney!%20Quero%20saber%20sobre%20o%20curso%20de%20martelinho%20de%20ouro." target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="btn zap" href="https://wa.me/5537999999921?text=Ol%C3%A1%2C%20Ney!%20Quero%20saber%20sobre%20o%20curso%20de%20martelinho%20de%20ouro." target="_blank" rel="noopener" id="zapCurso"><svg width="22" height="22" viewBox="0 0 24 24" fill="#04210f"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.6a1 1 0 01-.25 1z"/></svg>Falar no WhatsApp</a>
   </div>
 </div></section>
 
@@ -531,8 +555,12 @@ const sc = $("simCel"); if (sc) { iphone(sc, '<video src="' + sc.dataset.video +
 
 // simulador: a porcentagem de acabamento vai subindo, como no app
 (() => { const el = $("simPct"); if (!el) return; let v = 0;
-  setInterval(() => { const r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; v = v >= 100 ? 0 : Math.min(100, v + 3 + Math.round(Math.random() * 6)); el.textContent = v + "%"; el.style.color = v >= 100 ? "var(--ok)" : ""; }, 260); })();
+  setInterval(() => { const r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; v = v >= 100 ? 0 : Math.min(100, v + 3 + Math.round(Math.random() * 6)); el.textContent = v + "%"; el.style.color = v >= 100 ? "var(--ok)" : "";
+    const bola = el.closest(".pct"); bola.classList.remove("pula"); void bola.offsetWidth; bola.classList.add("pula");
+    if (v >= 100) tom([988, 1319, 1760], 0.4, 0.04); else tom([600 + v * 9], 0.035, 0.018, "triangle"); }, 260); })();
 
+// WhatsApp do curso treme de vez em quando quando está na tela
+setInterval(() => { const z = $("zapCurso"); if (!z) return; const r = z.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; z.classList.remove("treme"); void z.offsetWidth; z.classList.add("treme"); }, 3000);
 // som: clique, plim de notificação (Web Audio, bem baixinho; o botão 🔊 desliga)
 let somOn = true, AC = null, mexeu = false;
 try { somOn = localStorage.getItem("mp_som") !== "0"; } catch (_) {}
@@ -616,7 +644,7 @@ function rec() {
 }
 let autoAba = true;
 rec();
-setInterval(() => { const r = document.getElementById("rec"); if (!autoAba || !r) return; const q = r.getBoundingClientRect(); if (q.bottom < 0 || q.top > innerHeight) return; recI = (recI + 1) % REC.length; rec(); }, 1700);
+setInterval(() => { const r = document.getElementById("rec"); if (!autoAba || !r) return; const q = r.getBoundingClientRect(); if (q.bottom < 0 || q.top > innerHeight) return; recI = (recI + 1) % REC.length; rec(); const a = document.querySelector('.aba[data-i="' + recI + '"]'); if (a) { a.classList.add("toque"); } clique(); }, 1700);
 
 iphone($("calcCel"), '<div class="app3"><div class="eb">— Passo 3 de 3</div><h4>Preço e tempo</h4>' +
   '<div class="bx"><div class="eb" style="color:var(--mu);letter-spacing:1px">Marcos Vieira · RTX2B45</div><div style="font-weight:700;font-size:13px;margin:3px 0 4px">Hilux 2023 · Branco</div><div class="r"><span>Capô</span><b>2 amassados</b></div><div class="r"><span>Porta dianteira esquerda</span><b>3 amassados</b></div></div>' +
@@ -677,7 +705,7 @@ function planos() {
 let autoCiclo = true;
 $("cAnual").onclick = () => { autoCiclo = false; ciclo = "anual"; planos(); };
 $("cMensal").onclick = () => { autoCiclo = false; ciclo = "mensal"; planos(); };
-setInterval(() => { const pl = $("planos").getBoundingClientRect(); if (!autoCiclo || pl.bottom < 0 || pl.top > innerHeight) return; ciclo = ciclo === "anual" ? "mensal" : "anual"; planos(); document.querySelectorAll(".plano .preco").forEach((x) => x.classList.add("troca")); passa(); }, 4000);
+setInterval(() => { const pl = $("planos").getBoundingClientRect(); if (!autoCiclo || pl.bottom < 0 || pl.top > innerHeight) return; ciclo = ciclo === "anual" ? "mensal" : "anual"; planos(); document.querySelectorAll(".plano .preco").forEach((x) => x.classList.add("troca")); tom([1047, 1568], 0.18, 0.03); }, 4000);
 planos();
 fetch("https://vakoammvzbybptukvqnr.supabase.co/functions/v1/assinar", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ acao: "planos" }) })
   .then((r) => r.json()).then((j) => { if (j.planos && j.planos.length) { PLANOS = j.planos; planos(); } }).catch(() => {});
