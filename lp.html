@@ -302,6 +302,30 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 .vid{grid-template-columns:1.1fr .9fr!important}
 .sim .w{grid-template-columns:.9fr 1.1fr!important}
 #orcCel .tela .ims img{animation:none!important;object-fit:contain!important;object-position:center!important;background:#0b0b0c}
+
+/* mão com o celular maior */
+.mao2{max-width:760px!important}
+.vid{grid-template-columns:1.25fr .75fr!important;gap:30px!important}
+/* aparelhos: computador, notebook, iPad e iPhone com as telas do app, tudo fundido no fundo */
+.devs{position:relative;width:min(1180px,100%);margin:30px auto 0;aspect-ratio:1600/905}
+.devs>img{position:absolute;inset:0;width:100%;height:100%;-webkit-mask-image:radial-gradient(ellipse 62% 66% at 50% 48%,#000 50%,transparent 100%);mask-image:radial-gradient(ellipse 62% 66% at 50% 48%,#000 50%,transparent 100%)}
+.devs .ecr{position:absolute;overflow:hidden;background:#0b0b0c}
+.devs .ecr .cam{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
+.devs .ecr .cam.on{opacity:1}
+.devs .ecr img{display:block}
+.devs .ecr .neon{position:absolute;top:0;bottom:0;left:-40%;width:35%;background:linear-gradient(100deg,transparent,rgba(245,184,0,.0) 20%,rgba(255,236,160,.55) 50%,rgba(47,184,255,.25) 70%,transparent);mix-blend-mode:screen;pointer-events:none;transform:skewX(-18deg)}
+.devs .ecr .neon.vai{animation:neonPassa 1.4s ease-in-out}
+@keyframes neonPassa{to{left:120%}}
+.devs .ecr:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);pointer-events:none}
+.mesa{display:flex;gap:2.5%;height:100%;align-items:center;justify-content:center;padding:4% 4%;background:radial-gradient(120% 90% at 50% 0%,#1c1a12,#0b0b0c 60%)}
+.mesa img{height:100%;width:auto;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.devsTit{text-align:center}
+/* simulador: a porta com o amassado, dentro do iPhone, com o acabamento subindo */
+.simCel{position:relative;max-width:330px;margin:0 auto}
+.simCel .pct{position:absolute;right:-14%;top:38%;width:118px;height:118px;border-radius:50%;display:grid;place-items:center;text-align:center;background:rgba(10,14,20,.75);backdrop-filter:blur(8px);border:3px solid var(--neon);box-shadow:0 0 40px rgba(47,184,255,.45);z-index:7}
+.simCel .pct b{display:block;font:800 40px/1 "Barlow Condensed";color:var(--neon)}
+.simCel .pct span{font:700 10px Inter;letter-spacing:1.5px;color:#cfe9ff}
+@media (max-width:860px){.simCel .pct{right:-4%;width:96px;height:96px}.simCel .pct b{font-size:32px}}
 </style>
 </head>
 <body>
@@ -363,6 +387,14 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   <div class="rec" id="rec"></div>
 </div></section>
 
+<section id="aparelhos" style="padding-bottom:40px"><div class="w devsTit">
+  <span class="eyebrow rv">Celular, tablet e computador</span>
+  <h2 class="rv luzw" style="margin-top:12px">A sua oficina <span class="gold">em qualquer tela</span></h2>
+  <p class="mu rv" style="font-size:18px;max-width:720px;margin:14px auto 0">Faça o orçamento no celular, confira a agenda no tablet e feche o mês no computador. Mesma conta, tudo junto, na hora.</p>
+</div>
+<div class="devs rv" id="devs"><img src="img/aparelhos.webp" alt="Computador, notebook, tablet e celular com o Martelinho Pro"></div>
+</section>
+
 <section class="sim" id="simulador"><div class="w">
   <div class="rv">
     <span class="exclusivo">EXCLUSIVO · SÓ NO MARTELINHO PRO</span>
@@ -371,7 +403,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
     <ul><li>Peças 3D: porta, capô, para-lama, teto e mais</li><li>Tipos de amassado: granizo, vinco, risco, esticado</li><li>Mostra onde e como trabalhar, passo a passo</li><li>Porcentagem de acabamento ao vivo</li></ul>
     <a class="btn g" href="#planos">Quero o Prime com Simulador →</a>
   </div>
-  <div class="rv"><div class="b1" id="b1"><img src="img/oficina-b1.webp" alt="Celular com as telas do Martelinho Pro saindo para o ar"><div class="feixe"></div><div class="palco" id="palco"></div></div></div>
+  <div class="rv"><div class="simCel"><div class="phone" data-telas="21-sim-peca" style="width:min(320px,74vw)"></div><div class="pct"><div><b id="simPct">0%</b><span>ACABAMENTO</span></div></div></div></div>
 </div></section>
 
 <section id="calc"><div class="w">
@@ -480,6 +512,27 @@ const sc = $("simCel"); if (sc) { iphone(sc, '<video src="' + sc.dataset.video +
   const mostra = () => { if (!naTela) return; ns.forEach((n) => n.classList.remove("on")); const n = ns[i % ns.length]; n.classList.add("on"); plim(); i++; };
   setTimeout(mostra, 900); setInterval(mostra, 3200); })();
 
+// aparelhos: cada tela mostra uma parte do app; o neon passa por uma de cada vez e a tela troca
+(() => { const box = $("devs"); if (!box) return;
+  const E = [ // posição das telas na foto (fração) e o que cada uma mostra (em ordem de cima para baixo)
+    { x: .236, y: .065, w: .553, h: .522, cenas: [["01-home", "09-agenda", "12-caixa"], ["07-preco-lucro", "08-orcamento", "11-checkin"]] },
+    { x: .060, y: .460, w: .333, h: .348, cenas: [["orcamento-imagem", "05-carro-porta"], ["01-home", "07-preco-lucro"]] },
+    { x: .752, y: .366, w: .203, h: .484, cenas: [["09-agenda"], ["10-alarme"]] },
+    { x: .702, y: .550, w: .082, h: .313, cenas: [["21-sim-peca"], ["03-carro"]] } ];
+  const els = E.map((e, i) => { const d = document.createElement("div"); d.className = "ecr";
+    Object.assign(d.style, { left: e.x * 100 + "%", top: e.y * 100 + "%", width: e.w * 100 + "%", height: e.h * 100 + "%", borderRadius: i === 3 ? "12% / 6%" : i === 2 ? "3%" : "0.6%", zIndex: i === 0 ? 1 : 2 });
+    d.innerHTML = e.cenas.map((c, k) => '<div class="cam' + (k ? "" : " on") + '">' + (c.length > 1 ? '<div class="mesa">' + c.map((n) => '<img loading="lazy" src="img/' + n + '.webp" alt="">').join("") + "</div>" : '<img loading="lazy" src="img/' + c[0] + '.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top">') + "</div>").join("") + '<span class="neon"></span>';
+    box.appendChild(d); return d; });
+  let i = 0, vis = false;
+  new IntersectionObserver((e) => (vis = e[0].isIntersecting), { threshold: 0.3 }).observe(box);
+  setInterval(() => { if (!vis) return; const d = els[i % els.length], n = d.querySelector(".neon"), cs = [...d.querySelectorAll(".cam")];
+    n.classList.remove("vai"); void n.offsetWidth; n.classList.add("vai"); passa();
+    setTimeout(() => { const k = cs.findIndex((c) => c.classList.contains("on")); cs[k].classList.remove("on"); cs[(k + 1) % cs.length].classList.add("on"); }, 600); i++; }, 1500); })();
+
+// simulador: a porcentagem de acabamento vai subindo, como no app
+(() => { const el = $("simPct"); if (!el) return; let v = 0;
+  setInterval(() => { const r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; v = v >= 100 ? 0 : Math.min(100, v + 3 + Math.round(Math.random() * 6)); el.textContent = v + "%"; el.style.color = v >= 100 ? "var(--ok)" : ""; }, 260); })();
+
 // som: clique, plim de notificação (Web Audio, bem baixinho; o botão 🔊 desliga)
 let somOn = true, AC = null, mexeu = false;
 try { somOn = localStorage.getItem("mp_som") !== "0"; } catch (_) {}
@@ -535,15 +588,7 @@ document.addEventListener("pointerdown", (e) => { const b = e.target.closest && 
     tv.style.transform = "matrix3d(" + homog(w, h, Q.map(([x, y]) => [x * W, y * H])).join(",") + ")"; };
   $("maoImg").complete ? ajusta() : $("maoImg").addEventListener("load", ajusta); addEventListener("resize", ajusta); })();
 
-// simulador: as telas reais saem do celular, sobem e se separam no ar; depois trocam, uma de cada vez
-(() => { const palco = $("palco"); if (!palco) return;
-  const T = ["20-sim-inicio", "21-sim-peca", "13-simular", "05-carro-porta", "09-agenda", "12-caixa"]; let k = 0;
-  const pns = [0, 1, 2].map((i) => { const d = document.createElement("div"); d.className = "pn c" + i + " p" + i; d.innerHTML = '<img alt="Tela do Martelinho Pro" src="img/' + T[i] + '.webp"><span class="lz"></span>'; palco.appendChild(d); return d; });
-  let vis = false, comecou = false;
-  const abre = () => pns.forEach((p, i) => setTimeout(() => { p.classList.add("on"); plim(); }, 350 + i * 450));
-  const troca = () => { if (!vis) return; const i = k % 3, p = pns[i]; p.classList.remove("on");
-    setTimeout(() => { p.querySelector("img").src = "img/" + T[(3 + k) % T.length] + ".webp"; p.classList.add("on"); passa(); k++; }, 900); };
-  new IntersectionObserver((e) => { vis = e[0].isIntersecting; if (vis && !comecou) { comecou = true; abre(); setInterval(troca, 2800); } }, { threshold: 0.35 }).observe(palco); })();
+
 
 const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll(".rv").forEach((el) => io.observe(el));
