@@ -43,10 +43,63 @@ section{padding:90px 0;position:relative}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
 .selos{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:var(--mu);font-size:14px}
 .selos b{color:var(--fg)}
-.phone{position:relative;width:min(320px,78vw);aspect-ratio:1170/2532;margin:0 auto;border-radius:46px;padding:12px;background:linear-gradient(145deg,#3a3a3e,#111 40%,#2a2a2e);box-shadow:0 40px 90px rgba(0,0,0,.7),0 0 0 1px #444 inset,0 0 70px rgba(245,184,0,.16)}
-.phone .tela{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#000}
-.phone .tela img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s}
+.phone{position:relative;width:min(320px,78vw);aspect-ratio:9/19.3;margin:0 auto;border-radius:54px;padding:5px;background:linear-gradient(145deg,#6b6b70 0%,#2a2a2d 22%,#151517 50%,#2c2c30 78%,#76767b 100%);box-shadow:0 50px 100px rgba(0,0,0,.75),0 0 80px rgba(245,184,0,.18)}
+.phone .bt{position:absolute;width:4px;border-radius:3px;background:#3a3a3e}
+.phone .bt.a{left:-3px;top:18%;height:6%}.phone .bt.b{left:-3px;top:27%;height:10%}.phone .bt.c{right:-3px;top:25%;height:14%}
+.phone .bz{position:relative;width:100%;height:100%;border-radius:49px;background:#000;padding:9px}
+.phone .tela{position:relative;width:100%;height:100%;border-radius:41px;overflow:hidden;background:#0b0b0c}
+.phone .tela .ims{position:absolute;left:0;right:0;top:44px;bottom:0;overflow:hidden}
+.phone .tela img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .7s}
 .phone .tela img.on{opacity:1}
+.phone .tela video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.phone .sb{position:absolute;left:0;right:0;top:0;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Inter;color:#fff;z-index:3;background:#0b0b0c}
+.phone .sb i{display:flex;gap:4px;align-items:center;font-style:normal}
+.phone .ilha{position:absolute;left:50%;top:10px;width:31%;height:27px;margin-left:-15.5%;border-radius:20px;background:#000;z-index:4}
+.phone .vidro{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 32%);pointer-events:none;z-index:5}
+.notif{position:absolute;z-index:6;width:290px;max-width:84vw;display:flex;gap:11px;align-items:center;padding:12px 14px;border-radius:22px;background:rgba(245,245,247,.84);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:0 16px 40px rgba(0,0,0,.45);color:#000;font:13px/1.3 Inter;opacity:0;transform:translateY(-14px) scale(.94);transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.2,1.2);pointer-events:none}
+.notif.on{opacity:1;transform:none}
+.notif .ic{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:grid;place-items:center;overflow:hidden}
+.notif b{font-weight:600}.notif .ag{color:rgba(60,60,67,.6);font-size:12px;margin-left:auto;padding-left:8px}
+.notif .tx{color:#1c1c1e}
+.hz{position:relative}
+.hz .n0{top:7%;right:-26%}.hz .n1{top:43%;right:-36%}.hz .n2{bottom:9%;right:-20%}
+.luzw{background:radial-gradient(260px circle at var(--mx,-999px) var(--my,-999px),rgba(255,236,170,.9),transparent 60%),linear-gradient(var(--fg),var(--fg));-webkit-background-clip:text;background-clip:text}
+.luzw .gold,.luzw span{-webkit-text-fill-color:currentColor}
+.btn.g{animation:boia 3.2s ease-in-out infinite}
+@keyframes boia{0%,100%{translate:0 0}50%{translate:0 -3px}}
+.btn:after{content:"";position:absolute;inset:-2px;background:radial-gradient(120px circle at var(--bx,50%) var(--by,50%),rgba(255,255,255,.55),transparent 60%);opacity:0;transition:opacity .25s;pointer-events:none}
+.btn{position:relative;overflow:hidden}
+.btn:hover:after{opacity:1}
+.btn:active{scale:.96}
+.btn.o:hover{box-shadow:0 0 24px rgba(245,184,0,.35)}
+.aba{transition:transform .15s,box-shadow .2s}.aba:hover{box-shadow:0 0 18px rgba(245,184,0,.3);color:var(--fg)}.aba:active{transform:scale(.95)}
+.onda{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:onda .6s ease-out forwards;pointer-events:none}
+@keyframes onda{to{transform:scale(4);opacity:0}}
+.dor:hover{box-shadow:0 0 40px rgba(255,77,77,.12)}
+.som{position:fixed;right:14px;bottom:86px;z-index:31;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(22,22,24,.9);color:var(--fg);cursor:pointer;font-size:18px}
+@media (min-width:861px){.som{bottom:20px}}
+.frase h2 .pl{display:inline-block;opacity:0;transform:translateY(40px) rotateX(70deg);filter:blur(8px);transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.2,1.1),filter .5s;margin-right:.22em}
+.frase h2 .pl.on{opacity:1;transform:none;filter:none}
+.frase h2 .pl.sai{opacity:0;transform:translateY(-30px);filter:blur(8px)}
+.appres{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:22px 14px;gap:10px;font-family:Inter}
+.appres .cx{border-radius:16px;padding:16px 12px;text-align:center;transition:background .3s,border-color .3s;border:1.5px solid}
+.appres .cx.ganha{background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.55)}
+.appres .cx.perde{background:rgba(255,77,77,.12);border-color:rgba(255,77,77,.55)}
+.appres .tt{font:800 20px/1 "Barlow Condensed";text-transform:uppercase}
+.appres .vv{font:800 44px/1 "Barlow Condensed";margin:8px 0}
+.appres .ganha .tt,.appres .ganha .vv{color:var(--ok)}.appres .perde .tt,.appres .perde .vv{color:var(--bad)}
+.appres .lin{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mu);border-bottom:1px solid var(--line);padding:7px 2px}
+.appres .lin b{color:var(--fg)}
+.appres .bb{margin-top:6px;border-radius:12px;padding:12px;text-align:center;font:800 16px/1 "Barlow Condensed";letter-spacing:.6px;color:var(--ink);background:linear-gradient(180deg,var(--goldHi),var(--gold) 45%,var(--goldLo))}
+.appres .eb{color:var(--gold);font:700 11px Inter;letter-spacing:2px;text-transform:uppercase}
+.sim{background:radial-gradient(800px 500px at 70% 40%,rgba(47,184,255,.13),transparent 60%)}
+.sim .w{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.sim .exclusivo{display:inline-block;background:var(--neon);color:#001522;font:800 13px Inter;padding:7px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:14px}
+.sim h2{color:var(--fg)}
+.sim .phone{box-shadow:0 50px 100px rgba(0,0,0,.75),0 0 90px rgba(47,184,255,.28)}
+.sim ul{list-style:none;padding:0;margin:20px 0}
+.sim li{padding:10px 0 10px 34px;position:relative;border-bottom:1px solid var(--line)}
+.sim li:before{content:"◆";position:absolute;left:4px;top:10px;color:var(--neon)}
 .flutua{animation:flutua 6s ease-in-out infinite}
 @keyframes flutua{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-12px) rotate(1deg)}}
 .dores{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
@@ -133,6 +186,9 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
 .rv.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 @media (max-width:860px){
+  .hz .notif{left:50%!important;right:auto!important;top:auto!important;bottom:-30px!important;margin-left:-145px;width:290px}
+  .sim .w{grid-template-columns:1fr}
+
   section{padding:70px 0}
   .hero{padding-top:96px;min-height:auto}
   .hero .w,.vid,.rec,.orc,.calc,.planos{grid-template-columns:1fr}
@@ -154,7 +210,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
 <section class="hero"><div class="w">
   <div>
     <span class="eyebrow">O app do martelinho de ouro</span>
-    <h1>Você domina o martelinho.<br><span class="gold">Agora domine o seu negócio.</span></h1>
+    <h1 class="luzw">Você domina o martelinho.<br><span class="gold">Agora domine o seu negócio.</span></h1>
     <p class="lead">Orçamento com carro 3D e a <b>sua logo</b>, o preço certo para não trabalhar no prejuízo, agenda com alarme e o caixa do mês. Tudo no celular, feito por quem vive o martelinho de ouro todo dia.</p>
     <div class="ctas">
       <a class="btn g" href="https://app.ipdrx.com.br/">Testar 7 dias grátis →</a>
@@ -162,18 +218,16 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
     </div>
     <div class="selos"><span>✓ <b>7 dias grátis</b>, com tudo liberado</span><span>✓ Celular e computador</span><span>✓ Funciona sem internet</span></div>
   </div>
-  <div class="phone flutua"><div class="tela" id="heroTela">
-    <img class="on" src="img/01-home.webp" alt="Tela inicial do Martelinho Pro com os números do mês">
-    <img src="img/03-carro.webp" alt="Escolha do carro em 3D" loading="lazy">
-    <img src="img/07-preco-lucro.webp" alt="Tela mostrando o lucro do orçamento" loading="lazy">
-    <img src="img/09-agenda.webp" alt="Agenda da semana" loading="lazy">
-    <img src="img/12-caixa.webp" alt="Caixa do mês" loading="lazy">
-  </div></div>
+  <div class="hz"><div class="phone flutua" data-telas="01-home,03-carro,07-preco-lucro,09-agenda,12-caixa"></div>
+    <div class="notif n0"><div class="ic" style="background:#25D366"><svg viewBox="0 0 70 70" width="38" height="38"><path d="M35 14a20 20 0 00-17.3 30l-2.7 10 10.3-2.7A20 20 0 1035 14z" fill="#fff"/></svg></div><div><div style="display:flex"><b>Marcos Vieira</b><span class="ag">agora</span></div><div class="tx">Pode fazer! Aprovado o orçamento da Hilux 👍</div></div></div>
+    <div class="notif n1"><div class="ic" style="background:#111"><img src="img/icone.png" alt="" width="38" height="38"></div><div><div style="display:flex"><b>Martelinho Pro</b><span class="ag">agora</span></div><div class="tx">⏰ Carro chegando em 10 min · Jeep Compass às 16:00</div></div></div>
+    <div class="notif n2"><div class="ic" style="background:#111"><img src="img/icone.png" alt="" width="38" height="38"></div><div><div style="display:flex"><b>Martelinho Pro</b><span class="ag">agora</span></div><div class="tx">💰 Você está ganhando +R$ 1.725 neste orçamento</div></div></div>
+  </div>
 </div></section>
 
 <section id="dores"><div class="w">
   <span class="eyebrow rv">Se identifica?</span>
-  <h2 class="rv" style="margin-top:12px">A técnica você tem.<br>O que está <span style="color:var(--bad)">tirando o seu dinheiro</span> é outra coisa.</h2>
+  <h2 class="rv luzw" style="margin-top:12px">A técnica você tem.<br>O que está <span style="color:var(--bad)">tirando o seu dinheiro</span> é outra coisa.</h2>
   <div class="dores">
     <div class="dor rv"><div class="x">✕</div><h3>Preço no chute</h3><p>Você olha o amassado, pensa num número e torce para dar lucro. No fim do mês, não sabe se ganhou ou se pagou para trabalhar.</p></div>
     <div class="dor rv"><div class="x">✕</div><h3>Choro de desconto</h3><p>O cliente aprova pelo WhatsApp e, na hora de entregar, pede desconto. Sem nada combinado por escrito, você cede.</p></div>
@@ -200,14 +254,25 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
 
 <section id="como"><div class="w">
   <span class="eyebrow rv">Como funciona</span>
-  <h2 class="rv" style="margin-top:12px">Tudo o que a sua oficina precisa,<br><span class="gold">em um app só</span></h2>
+  <h2 class="rv luzw" style="margin-top:12px">Tudo o que a sua oficina precisa,<br><span class="gold">em um app só</span></h2>
   <div class="abas rv" id="abas"></div>
   <div class="rec" id="rec"></div>
 </div></section>
 
+<section class="sim" id="simulador"><div class="w">
+  <div class="rv">
+    <span class="exclusivo">EXCLUSIVO · SÓ NO MARTELINHO PRO</span>
+    <h2 class="luzw">Treine o amassado <span class="neon">antes de encostar</span> no carro do cliente</h2>
+    <p class="mu" style="font-size:18px;margin:16px 0 0">Nenhum outro app tem isso. Você escolhe a peça em 3D, o tipo de amassado e treina como se estivesse na bancada: o simulador mostra onde trabalhar, a ferramenta certa e a porcentagem de acabamento a cada toque.</p>
+    <ul><li>Peças 3D: porta, capô, para-lama, teto e mais</li><li>Tipos de amassado: granizo, vinco, risco, esticado</li><li>Mostra onde e como trabalhar, passo a passo</li><li>Porcentagem de acabamento ao vivo</li></ul>
+    <a class="btn g" href="#planos">Quero o Prime com Simulador →</a>
+  </div>
+  <div class="rv"><div class="phone flutua" data-telas="20-sim-inicio,21-sim-peca,13-simular" style="width:min(300px,74vw)"></div></div>
+</div></section>
+
 <section id="calc"><div class="w">
   <span class="eyebrow rv">Faça a conta agora</span>
-  <h2 class="rv" style="margin-top:12px">Esse serviço está te dando <span class="gold">lucro</span>?</h2>
+  <h2 class="rv luzw" style="margin-top:12px">Esse serviço está te dando <span class="gold">lucro</span>?</h2>
   <p class="mu rv" style="font-size:18px;max-width:700px">Arraste e veja. É a mesma conta que o Martelinho Pro faz em cada orçamento, com os números da sua oficina.</p>
   <div class="calc">
     <div class="card rv">
@@ -216,16 +281,17 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
       <div class="campo"><label>Quanto você quer cobrar neste serviço <b id="vPreco"></b></label><input type="range" id="preco" min="50" max="3000" step="10" value="350"></div>
       <div class="campo" style="margin:0"><label>Tempo que o serviço vai levar <b id="vTempo"></b></label><input type="range" id="tempo" min="0.5" max="24" step="0.5" value="4"></div>
     </div>
-    <div class="card res rv" id="res"><div class="eyebrow" id="resTit" style="justify-content:center">Você está ganhando</div><div class="big" id="resVal"></div><div id="resTxt"></div><div class="hora" id="resHora"></div></div>
+    <div class="rv"><div class="phone" id="calcCel"></div></div>
   </div>
 </div></section>
 
 <section><div class="w orc">
   <img class="rv" src="img/orcamento-imagem.webp" alt="Imagem do orçamento com a logo da oficina" loading="lazy">
   <div class="rv">
-    <span class="eyebrow">Acabou o choro de desconto</span>
-    <h2 style="margin:12px 0 10px">Orçamento com a sua logo e a <span class="gold">aprovação do cliente</span></h2>
-    <p class="mu" style="font-size:18px">O cliente recebe um orçamento profissional e aprova na hora. Na entrega, o preço já está combinado.</p>
+    <span class="eyebrow">O app é seu, com a sua marca</span>
+    <h2 class="luzw" style="margin:12px 0 10px">A <span class="gold">SUA logo</span> em tudo.<br>Não a nossa.</h2>
+    <p style="font-size:20px;margin:0 0 10px">Seu cliente não vê "Martelinho Pro". Ele vê <b class="gold">a sua oficina</b>: o seu nome, a sua logo, o seu telefone, num orçamento que parece de concessionária.</p>
+    <p class="mu" style="font-size:18px">É isso que faz o cliente parar de pedir desconto: ele enxerga uma empresa, não um cara com um martelo. E ele aprova na hora, então na entrega o preço já está combinado.</p>
     <div class="passos">
       <div class="passo"><div><b>Toque no carro 3D</b><br><span class="mu">Marque as peças amassadas e quantos amassados tem em cada uma.</span></div></div>
       <div class="passo"><div><b>Veja se o preço dá lucro</b><br><span class="mu">O app mostra o valor da sua hora e avisa se você está ganhando ou perdendo.</span></div></div>
@@ -235,12 +301,12 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
 </div></section>
 
 <section class="frase"><div class="w">
-  <h2 class="rv">Não adianta ser excelente na técnica<br><span class="gold">se o seu negócio não dá lucro.</span></h2>
+  <h2 id="fraseAnim" aria-label="Não adianta ser excelente na técnica se o seu negócio não dá lucro."></h2>
 </div></section>
 
 <section id="planos" style="text-align:center"><div class="w">
   <span class="eyebrow rv">Planos</span>
-  <h2 class="rv" style="margin-top:12px">Comece hoje. <span class="gold">Teste 7 dias grátis.</span></h2>
+  <h2 class="rv luzw" style="margin-top:12px">Comece hoje. <span class="gold">Teste 7 dias grátis.</span></h2>
   <div class="ciclo rv"><button id="cAnual" class="on">Anual<small>12x sem juros · mais barato</small></button><button id="cMensal">Mensal<small>cancele quando quiser</small></button></div>
   <div class="planos rv" id="planosLista"></div>
   <p class="gratis rv">Ainda não decidiu? <a href="https://app.ipdrx.com.br/">Crie seu acesso e teste 7 dias grátis</a>, com tudo liberado e sem cartão.</p>
@@ -248,7 +314,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
 </div></section>
 
 <section style="padding-top:20px"><div class="w">
-  <h2 class="rv" style="text-align:center">Perguntas <span class="gold">frequentes</span></h2>
+  <h2 class="rv luzw" style="text-align:center">Perguntas <span class="gold">frequentes</span></h2>
   <div class="faq rv">
     <details><summary>Como funciona o teste grátis?</summary><p>Você cria o seu acesso com o seu e-mail e usa tudo liberado por 7 dias, sem cartão. No fim, escolhe o plano que faz sentido para você. Seus orçamentos, clientes e agenda continuam guardados.</p></details>
     <details><summary>Funciona no celular e no computador?</summary><p>Sim. Funciona no Android, no iPhone e no computador (pelo navegador), com a mesma conta. O que você faz no celular aparece no computador.</p></details>
@@ -276,6 +342,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
   <nav><a href="legal/termos.html">Termos de Uso</a><a href="legal/privacidade.html">Privacidade</a><a href="legal/suporte.html">Suporte</a><a href="legal/excluir-conta.html">Excluir conta</a></nav>
 </div></footer>
 
+<button class="som" id="som" aria-label="Ligar ou desligar o som">🔊</button>
 <div class="fixa" id="fixa"><a class="btn g" href="https://app.ipdrx.com.br/">Testar 7 dias grátis →</a></div>
 
 <script>
@@ -285,7 +352,54 @@ const brl0 = (v) => Number(v).toLocaleString("pt-BR", { style: "currency", curre
 
 addEventListener("scroll", () => { $("topo").classList.toggle("s", scrollY > 10); $("fixa").classList.toggle("on", scrollY > innerHeight * 0.8 && scrollY < document.body.scrollHeight - innerHeight * 1.6); }, { passive: true });
 
-(() => { const ims = [...$("heroTela").children]; let i = 0; setInterval(() => { ims[i].classList.remove("on"); i = (i + 1) % ims.length; ims[i].classList.add("on"); }, 2600); })();
+// iPhone de verdade: moldura, botões, Dynamic Island, barra de status e reflexo do vidro
+function iphone(el, miolo) {
+  el.innerHTML = '<span class="bt a"></span><span class="bt b"></span><span class="bt c"></span><div class="bz"><div class="tela">' +
+    '<div class="sb"><span>9:41</span><i><svg width="17" height="11" viewBox="0 0 17 11"><rect x="0" y="7" width="3" height="4" rx="1" fill="#fff"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="#fff"/><rect x="9" y="2.5" width="3" height="8.5" rx="1" fill="#fff"/><rect x="13.5" y="0" width="3" height="11" rx="1" fill="#fff"/></svg><svg width="24" height="11" viewBox="0 0 24 11"><rect x=".5" y=".5" width="21" height="10" rx="3" fill="none" stroke="#fff" opacity=".5"/><rect x="2" y="2" width="16" height="7" rx="1.6" fill="#fff"/><rect x="22.5" y="3.5" width="1.5" height="4" rx=".7" fill="#fff" opacity=".5"/></svg></i></div>' +
+    '<div class="ims">' + miolo + '</div><div class="ilha"></div><div class="vidro"></div></div></div>';
+}
+document.querySelectorAll(".phone[data-telas]").forEach((el) => {
+  const t = el.dataset.telas.split(",");
+  iphone(el, t.map((n, i) => '<img ' + (i ? 'loading="lazy" ' : 'class="on" ') + 'src="img/' + n + '.webp" alt="Tela do Martelinho Pro">').join(""));
+  const ims = [...el.querySelectorAll("img")]; let i = 0;
+  if (ims.length > 1) setInterval(() => { ims[i].classList.remove("on"); i = (i + 1) % ims.length; ims[i].classList.add("on"); }, 2600);
+});
+const sc = $("simCel"); if (sc) { iphone(sc, '<video src="' + sc.dataset.video + '" poster="img/21-sim-peca.webp" muted loop playsinline preload="none"></video>'); const v = sc.querySelector("video"); new IntersectionObserver((e) => e[0].isIntersecting ? v.play().catch(() => {}) : v.pause(), { threshold: 0.3 }).observe(sc); }
+
+// notificações do iOS chegando uma depois da outra (com o "plim")
+(() => { const ns = [...document.querySelectorAll(".hz .notif")]; let i = 0;
+  const mostra = () => { ns.forEach((n) => n.classList.remove("on")); const n = ns[i % ns.length]; n.classList.add("on"); if (window.innerWidth > 860) { ns[(i + 2) % ns.length].classList.add("on"); } plim(); i++; };
+  setTimeout(mostra, 900); setInterval(mostra, 3200); })();
+
+// som: clique, plim de notificação (Web Audio, bem baixinho; o botão 🔊 desliga)
+let somOn = true, AC = null, mexeu = false;
+try { somOn = localStorage.getItem("mp_som") !== "0"; } catch (_) {}
+const somBtn = () => ($("som").textContent = somOn ? "🔊" : "🔇");
+function tom(freqs, dur, vol, tipo) { if (!somOn || !mexeu) return; try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); const t0 = AC.currentTime;
+  freqs.forEach((f, k) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = tipo || "sine"; o.frequency.value = f; g.gain.setValueAtTime(0, t0 + k * 0.09); g.gain.linearRampToValueAtTime(vol, t0 + k * 0.09 + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t0 + k * 0.09 + dur); o.connect(g); g.connect(AC.destination); o.start(t0 + k * 0.09); o.stop(t0 + k * 0.09 + dur + 0.05); }); } catch (_) {} }
+const clique = () => tom([1650], 0.05, 0.05, "triangle");
+const plim = () => tom([1318, 1760], 0.35, 0.035);
+const passa = () => tom([2400], 0.025, 0.012, "sine");
+addEventListener("pointerdown", () => (mexeu = true), { once: true });
+$("som").onclick = () => { somOn = !somOn; try { localStorage.setItem("mp_som", somOn ? "1" : "0"); } catch (_) {} somBtn(); mexeu = true; clique(); };
+somBtn();
+
+// luz que segue o mouse nos títulos e nos botões; onda no clique
+addEventListener("pointermove", (e) => { document.querySelectorAll(".luzw").forEach((h) => { const r = h.getBoundingClientRect(); h.style.setProperty("--mx", e.clientX - r.left + "px"); h.style.setProperty("--my", e.clientY - r.top + "px"); }); }, { passive: true });
+document.addEventListener("pointermove", (e) => { const b = e.target.closest && e.target.closest(".btn"); if (!b) return; const r = b.getBoundingClientRect(); b.style.setProperty("--bx", e.clientX - r.left + "px"); b.style.setProperty("--by", e.clientY - r.top + "px"); });
+document.addEventListener("pointerover", (e) => { const b = e.target.closest && e.target.closest(".btn,.aba,.ciclo button"); if (b && !b.contains(e.relatedTarget)) passa(); });
+document.addEventListener("pointerdown", (e) => { const b = e.target.closest && e.target.closest(".btn,.aba,.ciclo button,summary"); if (!b) return; clique();
+  if (b.classList.contains("btn")) { const r = b.getBoundingClientRect(), o = document.createElement("span"), d = Math.max(r.width, r.height); o.className = "onda"; o.style.cssText = "width:" + d + "px;height:" + d + "px;left:" + (e.clientX - r.left - d / 2) + "px;top:" + (e.clientY - r.top - d / 2) + "px"; b.appendChild(o); setTimeout(() => o.remove(), 650); } });
+
+// frase entrando palavra por palavra, ficando, saindo e voltando
+(() => { const h = $("fraseAnim"); if (!h) return;
+  const linhas = [["Não", "adianta", "ser", "excelente", "na", "técnica"], ["se", "o", "seu", "negócio", "não", "dá", "lucro."]];
+  h.innerHTML = linhas.map((l, k) => l.map((p) => '<span class="pl' + (k ? " gold" : "") + '">' + p + "</span>").join(" ")).join("<br>");
+  const ps = [...h.querySelectorAll(".pl")]; let rodando = false;
+  const ciclo = () => { ps.forEach((p, i) => setTimeout(() => { p.classList.remove("sai"); p.classList.add("on"); }, i * 140));
+    setTimeout(() => ps.forEach((p, i) => setTimeout(() => { p.classList.add("sai"); p.classList.remove("on"); }, i * 60)), ps.length * 140 + 3800);
+    setTimeout(ciclo, ps.length * 140 + 3800 + ps.length * 60 + 700); };
+  new IntersectionObserver((e) => { if (e[0].isIntersecting && !rodando) { rodando = true; ciclo(); } }, { threshold: 0.4 }).observe(h); })();
 
 const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll(".rv").forEach((el) => io.observe(el));
@@ -310,17 +424,21 @@ function rec() {
 }
 rec();
 
+iphone($("calcCel"), '<div class="appres"><div class="eb">— Preço e tempo</div><div class="cx" id="resCx"><div class="tt" id="resTit"></div><div class="vv" id="resVal"></div><div id="resTxt" style="font-size:12.5px;color:#cfccc2"></div></div>' +
+  '<div class="lin"><span>Custo da sua hora</span><b id="lH"></b></div><div class="lin"><span>Custo deste serviço</span><b id="lC"></b></div><div class="lin"><span>Você ganha por hora</span><b id="lG"></b></div><div class="bb">GERAR ORÇAMENTO</div></div>');
+let ultimoLado = null;
 function calc() {
   const g = +$("gasto").value, h = +$("horas").value, p = +$("preco").value, t = +$("tempo").value;
   $("vGasto").textContent = brl0(g); $("vHoras").textContent = h + " h"; $("vPreco").textContent = brl0(p);
   $("vTempo").textContent = t < 1 ? "30 min" : String(t).replace(".", ",") + " h";
-  const custoHora = g / h, custo = custoHora * t, lucro = p - custo, porHora = p / t;
-  const ganha = lucro >= 0;
-  $("res").className = "card res on " + (ganha ? "ganha" : "perde");
+  const custoHora = g / h, custo = custoHora * t, lucro = p - custo, ganha = lucro >= 0;
+  $("resCx").className = "cx " + (ganha ? "ganha" : "perde");
   $("resTit").textContent = ganha ? "Você está ganhando" : "Você está perdendo";
   $("resVal").textContent = (ganha ? "+" : "−") + brl0(Math.abs(lucro));
-  $("resTxt").textContent = ganha ? "acima do custo da sua oficina neste serviço" : "você está pagando para trabalhar neste serviço";
-  $("resHora").innerHTML = `Sua hora custa <b>${brl(custoHora)}</b>. Neste serviço você ganha <b>${brl(porHora)}</b> por hora.`;
+  $("resTxt").textContent = ganha ? "acima do custo da sua oficina" : "você está pagando para trabalhar";
+  $("lH").textContent = brl(custoHora); $("lC").textContent = brl(custo); $("lG").textContent = brl(p / t);
+  if (ultimoLado !== null && ultimoLado !== ganha) tom(ganha ? [880, 1320] : [330, 220], 0.2, 0.04, ganha ? "sine" : "square");
+  ultimoLado = ganha;
 }
 ["gasto", "horas", "preco", "tempo"].forEach((id) => ($(id).oninput = calc)); calc();
 
