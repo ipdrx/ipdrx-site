@@ -226,6 +226,82 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
   .fixa{display:block}
   .rec .phone{width:min(250px,66vw)}
 }
+
+/* notificação do topo menor */
+.hz .notif{width:min(250px,80%)!important;margin-left:calc(min(250px,80%) / -2)!important;padding:9px 11px;border-radius:18px;font-size:11.5px;gap:9px}
+.hz .notif .ic{width:30px;height:30px;border-radius:7px}.hz .notif .ic img,.hz .notif .ic svg{width:30px;height:30px}
+/* vídeo na mão (foto A2): o vídeo é encaixado em perspectiva na tela do celular */
+.mao2{position:relative;max-width:460px;margin:0 auto;border-radius:28px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+.mao2>img{width:100%;display:block}
+.mao2 .tv2{position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden;background:#000;border-radius:26px}
+.mao2 .tv2 video{width:100%;height:100%;object-fit:cover;display:block}
+.mao2 .tv2 .brilho{position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.14),transparent 35%);pointer-events:none}
+.mao2 .tocar{position:absolute;inset:0;display:grid;place-items:center;border:0;background:none;cursor:pointer;z-index:3}
+.mao2 .tocar span{width:84px;height:84px;border-radius:50%;background:var(--gold);display:grid;place-items:center;box-shadow:0 0 0 14px rgba(245,184,0,.22);animation:pulsa 2s infinite}
+/* simulador: foto B1 limpa + telas reais que saem do celular e se separam no ar */
+.b1{position:relative;max-width:560px;margin:0 auto;aspect-ratio:1000/1242;border-radius:28px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 80px rgba(47,184,255,.15)}
+.b1>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.b1 .palco{position:absolute;inset:0;perspective:900px;perspective-origin:50% 70%}
+.b1 .pn{position:absolute;left:47%;top:58%;width:21%;aspect-ratio:1170/2532;margin:-19.5% 0 0 -9%;border-radius:14px;overflow:hidden;transform-style:preserve-3d;opacity:0;
+  transform:translate3d(0,0,0) rotateX(52deg) rotateZ(-28deg) scale(.15);transition:transform 1.3s cubic-bezier(.2,.9,.2,1),opacity .6s,box-shadow .4s}
+.b1 .pn img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.b1 .pn:after{content:"";position:absolute;inset:0;border-radius:14px;border:2px solid currentColor;box-shadow:inset 0 0 18px currentColor;pointer-events:none}
+.b1 .pn .lz{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 45%,transparent 60%);transform:translateX(-120%);animation:passaLuz 3.5s ease-in-out infinite}
+@keyframes passaLuz{60%,100%{transform:translateX(120%)}}
+.b1 .pn.c0{color:#F5B800}.b1 .pn.c1{color:#2fb8ff}.b1 .pn.c2{color:#F5B800}
+.b1 .pn.on{opacity:1;box-shadow:0 0 40px currentColor}
+.b1 .pn.on.p0{transform:translate3d(-95%,-72%,0) rotateX(24deg) rotateZ(-14deg) scale(1)}
+.b1 .pn.on.p1{transform:translate3d(-5%,-92%,40px) rotateX(24deg) rotateZ(-14deg) scale(1.04)}
+.b1 .pn.on.p2{transform:translate3d(88%,-90%,0) rotateX(24deg) rotateZ(-14deg) scale(1)}
+.b1 .feixe{position:absolute;left:47%;top:58%;width:2px;height:2px;box-shadow:0 0 60px 30px rgba(47,184,255,.25);border-radius:50%;animation:fx 2.6s ease-in-out infinite}
+@keyframes fx{50%{box-shadow:0 0 90px 45px rgba(245,184,0,.25)}}
+/* abas acendendo em sequência; Simulador "incha" */
+.aba{transition:background .35s,color .35s,transform .35s,box-shadow .35s}
+.aba.sim.on{transform:scale(1.12);box-shadow:0 0 30px rgba(47,184,255,.55);background:var(--neon);border-color:var(--neon);color:#001522}
+/* conta: app inteiro dentro do celular + vidro + barras que sobem */
+.app3{position:absolute;inset:0;display:flex;flex-direction:column;gap:9px;padding:12px 12px 14px;font-family:Inter;background:linear-gradient(180deg,#0b0b0c,#111114)}
+.app3 .eb{color:var(--gold);font:700 10px Inter;letter-spacing:2px;text-transform:uppercase}
+.app3 h4{margin:0;font:800 22px/1 "Barlow Condensed";text-transform:uppercase}
+.app3 .bx{border:1px solid var(--line);border-radius:12px;padding:9px 10px;background:#141417}
+.app3 .bx .r{display:flex;justify-content:space-between;font-size:11px;padding:3px 0;color:#cfccc2}
+.app3 .bx .r b{color:var(--fg)}
+.app3 .in{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:700 18px Inter;background:#0e0e10}
+.app3 .lbl{font-size:10.5px;color:var(--mu);margin-bottom:3px}
+.app3 .barra{height:7px;border-radius:5px;background:#26262b;overflow:hidden}
+.app3 .barra i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,var(--goldLo),var(--gold),var(--goldHi));transition:width .9s cubic-bezier(.2,.9,.2,1),background .5s}
+.app3 .vdr{border-radius:16px;padding:12px;text-align:center;border:1.5px solid;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 30px rgba(0,0,0,.4);transition:border-color .4s,background .4s}
+.app3 .vdr.ganha{border-color:rgba(46,204,113,.6);background:linear-gradient(160deg,rgba(46,204,113,.18),rgba(255,255,255,.04))}
+.app3 .vdr.perde{border-color:rgba(255,77,77,.6);background:linear-gradient(160deg,rgba(255,77,77,.18),rgba(255,255,255,.04))}
+.app3 .vdr .tt{font:800 16px/1 "Barlow Condensed";text-transform:uppercase}
+.app3 .vdr .vv{font:800 38px/1 "Barlow Condensed";margin:6px 0 2px}
+.app3 .vdr.ganha .tt,.app3 .vdr.ganha .vv{color:var(--ok)}.app3 .vdr.perde .tt,.app3 .vdr.perde .vv{color:var(--bad)}
+.app3 .bot{display:grid;grid-template-columns:1fr 1.3fr;gap:7px;margin-top:auto}
+.app3 .bot div{border-radius:11px;padding:11px 6px;text-align:center;font:800 13px/1 "Barlow Condensed";letter-spacing:.5px}
+.app3 .bot .v{border:1px solid var(--line)}.app3 .bot .g{color:var(--ink);background:linear-gradient(180deg,var(--goldHi),var(--gold) 45%,var(--goldLo))}
+input[type=range]{-webkit-appearance:none;appearance:none;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--goldLo),var(--gold) var(--p,50%),#2a2a2e var(--p,50%));outline:none;transition:background .2s}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6c9,var(--gold) 60%,var(--goldLo));box-shadow:0 0 0 5px rgba(245,184,0,.18),0 0 18px rgba(245,184,0,.6);cursor:grab}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radius:50%;background:var(--gold);box-shadow:0 0 18px rgba(245,184,0,.6)}
+/* orçamento: rola devagar dentro do celular, mostrando tudo até o valor total */
+#orcCel .tela .ims img{object-fit:cover;object-position:50% 0;animation:rolaOrc 9s ease-in-out infinite alternate}
+@keyframes rolaOrc{0%,12%{object-position:50% 0}88%,100%{object-position:50% 100%}}
+/* preços chamando atenção */
+.plano .preco{position:relative;display:inline-block;background:linear-gradient(100deg,var(--fg) 40%,#fff6c9 50%,var(--fg) 60%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:brilhoPreco 3s linear infinite}
+.plano .preco small{-webkit-text-fill-color:var(--mu)}
+.plano.prime .preco{background-image:linear-gradient(100deg,var(--neon) 40%,#e6f8ff 50%,var(--neon) 60%)}
+@keyframes brilhoPreco{to{background-position:-150% 0}}
+.plano .preco.troca{animation:brilhoPreco 3s linear infinite,pulaPreco .55s cubic-bezier(.2,.9,.2,1.4)}
+@keyframes pulaPreco{0%{transform:translateY(16px) scale(.85);opacity:0}100%{transform:none;opacity:1}}
+.ciclo button{position:relative;transition:background .4s,color .4s}
+.btn.g:before{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:varre 3.6s ease-in-out infinite}
+@keyframes varre{0%,55%{left:-60%}100%{left:130%}}
+
+/* fotos fundidas no fundo da página: sem quadro, sem borda, bordas somem no preto */
+.mao2,.b1{border-radius:0!important;box-shadow:none!important;overflow:visible!important;max-width:620px!important}
+.mao2>img,.b1>img{-webkit-mask-image:radial-gradient(ellipse 58% 56% at 52% 52%,#000 38%,transparent 100%);mask-image:radial-gradient(ellipse 58% 56% at 52% 52%,#000 38%,transparent 100%)}
+.b1 .palco{overflow:visible}
+.vid{grid-template-columns:1.1fr .9fr!important}
+.sim .w{grid-template-columns:.9fr 1.1fr!important}
+#orcCel .tela .ims img{animation:none!important;object-fit:contain!important;object-position:center!important;background:#0b0b0c}
 </style>
 </head>
 <body>
@@ -268,9 +344,9 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
 </div></section>
 
 <section><div class="w vid">
-  <div class="mao rv" id="mao"><img class="fundo" src="img/mao-iphone.webp" alt="Mão segurando um iPhone com o vídeo do Martelinho Pro">
-    <div class="tv" id="tv"><div class="ilhaV"></div><video id="video" src="img/martelinho-pro.mp4" poster="img/video-capa.webp" playsinline preload="none"></video>
-    <button class="play" id="play" aria-label="Assistir ao vídeo"><span><svg width="28" height="28" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="#141000"/></svg></span></button></div>
+  <div class="mao2 rv" id="mao"><img src="img/mao-a2.webp" alt="Mão de mecânico segurando o celular com o vídeo do Martelinho Pro" id="maoImg">
+    <div class="tv2" id="tv"><video id="video" src="img/martelinho-pro.mp4" poster="img/video-capa.webp" playsinline preload="none"></video><div class="brilho"></div></div>
+    <button class="tocar" id="play" aria-label="Assistir ao vídeo"><span><svg width="30" height="30" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="#141000"/></svg></span></button>
   </div>
   <div class="rv">
     <span class="eyebrow">1 minuto</span>
@@ -295,7 +371,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
     <ul><li>Peças 3D: porta, capô, para-lama, teto e mais</li><li>Tipos de amassado: granizo, vinco, risco, esticado</li><li>Mostra onde e como trabalhar, passo a passo</li><li>Porcentagem de acabamento ao vivo</li></ul>
     <a class="btn g" href="#planos">Quero o Prime com Simulador →</a>
   </div>
-  <div class="rv flut" id="flutSim" data-telas="20-sim-inicio,21-sim-peca,13-simular"><div class="phone" data-telas="21-sim-peca,20-sim-inicio,13-simular"></div></div>
+  <div class="rv"><div class="b1" id="b1"><img src="img/oficina-b1.webp" alt="Celular com as telas do Martelinho Pro saindo para o ar"><div class="feixe"></div><div class="palco" id="palco"></div></div></div>
 </div></section>
 
 <section id="calc"><div class="w">
@@ -445,9 +521,29 @@ document.addEventListener("pointerdown", (e) => { const b = e.target.closest && 
     i++; };
   prox(); setInterval(prox, 2600); })();
 
-// vídeo: encaixa na tela do celular da foto (posição medida na imagem)
-(() => { const tv = $("tv"); if (!tv) return; const T = { x: 0.3319, y: 0.1719, w: 0.3351, h: 0.5959, r: 0.13 };
-  Object.assign(tv.style, { left: T.x * 100 + "%", top: T.y * 100 + "%", width: T.w * 100 + "%", height: T.h * 100 + "%", borderRadius: T.r * 100 + "% / " + (T.r * T.w / T.h) * 100 + "%" }); })();
+// vídeo: encaixa em perspectiva nos 4 cantos da tela do celular da foto
+(() => { const box = $("mao"), tv = $("tv"); if (!box) return;
+  const Q = [[0.258, 0.211], [0.555, 0.179], [0.683, 0.721], [0.372, 0.765]]; // cantos (sup.esq, sup.dir, inf.dir, inf.esq) em fração da foto
+  function homog(w, h, p) { // retângulo w×h -> quadrilátero p
+    const [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] = p;
+    const dx1 = x1 - x2, dx2 = x3 - x2, dx3 = x0 - x1 + x2 - x3, dy1 = y1 - y2, dy2 = y3 - y2, dy3 = y0 - y1 + y2 - y3;
+    const d = dx1 * dy2 - dx2 * dy1, g = (dx3 * dy2 - dx2 * dy3) / d, hh = (dx1 * dy3 - dx3 * dy1) / d;
+    const a = x1 - x0 + g * x1, b = x3 - x0 + hh * x3, c = x0, dd = y1 - y0 + g * y1, e = y3 - y0 + hh * y3, ff = y0;
+    return [a / w, dd / w, 0, g / w, b / h, e / h, 0, hh / h, 0, 0, 1, 0, c, ff, 0, 1]; }
+  const ajusta = () => { const W = box.clientWidth, H = box.clientHeight, w = 300, h = 640;
+    tv.style.width = w + "px"; tv.style.height = h + "px";
+    tv.style.transform = "matrix3d(" + homog(w, h, Q.map(([x, y]) => [x * W, y * H])).join(",") + ")"; };
+  $("maoImg").complete ? ajusta() : $("maoImg").addEventListener("load", ajusta); addEventListener("resize", ajusta); })();
+
+// simulador: as telas reais saem do celular, sobem e se separam no ar; depois trocam, uma de cada vez
+(() => { const palco = $("palco"); if (!palco) return;
+  const T = ["20-sim-inicio", "21-sim-peca", "13-simular", "05-carro-porta", "09-agenda", "12-caixa"]; let k = 0;
+  const pns = [0, 1, 2].map((i) => { const d = document.createElement("div"); d.className = "pn c" + i + " p" + i; d.innerHTML = '<img alt="Tela do Martelinho Pro" src="img/' + T[i] + '.webp"><span class="lz"></span>'; palco.appendChild(d); return d; });
+  let vis = false, comecou = false;
+  const abre = () => pns.forEach((p, i) => setTimeout(() => { p.classList.add("on"); plim(); }, 350 + i * 450));
+  const troca = () => { if (!vis) return; const i = k % 3, p = pns[i]; p.classList.remove("on");
+    setTimeout(() => { p.querySelector("img").src = "img/" + T[(3 + k) % T.length] + ".webp"; p.classList.add("on"); passa(); k++; }, 900); };
+  new IntersectionObserver((e) => { vis = e[0].isIntersecting; if (vis && !comecou) { comecou = true; abre(); setInterval(troca, 2800); } }, { threshold: 0.35 }).observe(palco); })();
 
 const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll(".rv").forEach((el) => io.observe(el));
@@ -459,40 +555,59 @@ new IntersectionObserver((e) => { if (!e[0].isIntersecting && !$("video").paused
 
 const REC = [
   { k: "Orçamento 3D", t: "Orçamento em <span class='gold'>3 toques</span>", img: "05-carro-porta", d: "Escolha o carro, toque nas peças amassadas e diga quantos amassados tem em cada uma.", l: ["Carros em 3D: esportivo, SUV e caminhonete", "Peça por peça, sem esquecer nada", "Imagem pronta com a sua logo para o WhatsApp", "Histórico de cada carro e cliente"] },
-  { k: "Preço certo", t: "Pare de trabalhar <span style='color:var(--bad)'>no prejuízo</span>", img: "07-preco-lucro", d: "Cadastre os gastos da oficina uma vez. Em cada orçamento o app mostra se você está ganhando ou perdendo dinheiro.", l: ["Valor da sua hora calculado sozinho", "Aviso de prejuízo, empate ou lucro", "Meta de faturamento do mês", "Orçamentos feitos e aprovados no mês"] },
   { k: "Agenda", t: "Nunca mais perca <span class='gold'>um carro</span>", img: "10-alarme", d: "Agende o carro e o celular avisa antes e na hora da chegada, com alarme, mesmo bloqueado.", l: ["Alarme antes e na hora do carro chegar", "Aviso ao cliente pelo WhatsApp com um toque", "Check-in com fotos do painel e da lataria", "Semana inteira à vista"] },
   { k: "Caixa", t: "Saiba quanto <span class='gold'>sobrou no mês</span>", img: "12-caixa", d: "Orçamento aprovado entra sozinho. Você lança as saídas em segundos e vê o saldo do mês.", l: ["Entradas e saídas do mês", "Saldo e meta de faturamento", "Fechamento do mês", "Funciona sem internet"] },
   { k: "Simulador", t: "Treine <span class='neon'>antes de encostar</span> no carro", img: "21-sim-peca", d: "No plano Prime: pratique em peças 3D, veja o amassado, escolha a ferramenta e acompanhe o acabamento a cada toque.", l: ["Peças 3D para treinar", "Mostra onde e como trabalhar", "Porcentagem de acabamento", "Ideal para quem está começando"] },
 ];
 let recI = 0;
 function rec() {
-  $("abas").innerHTML = REC.map((r, i) => `<button class="aba ${i === recI ? "on" : ""}" data-i="${i}">${r.k}</button>`).join("");
+  $("abas").innerHTML = REC.map((r, i) => `<button class="aba ${r.k === "Simulador" ? "sim " : ""}${i === recI ? "on" : ""}" data-i="${i}">${r.k}</button>`).join("");
   const r = REC[recI];
   $("rec").innerHTML = `<div class="phone fade" id="recCel"></div>
     <div class="fade"><span class="eyebrow">${r.k}</span><h3>${r.t}</h3><p class="mu" style="font-size:18px;margin:0">${r.d}</p><ul>${r.l.map((x) => `<li>${x}</li>`).join("")}</ul>
     <a class="btn g" style="margin-top:22px" href="https://app.ipdrx.com.br/">Testar grátis →</a></div>`;
   iphone($("recCel"), '<img class="on" src="img/' + r.img + '.webp" alt="' + r.k + ' no Martelinho Pro">');
-  document.querySelectorAll(".aba").forEach((b) => (b.onclick = () => { recI = +b.dataset.i; rec(); }));
+  document.querySelectorAll(".aba").forEach((b) => (b.onclick = () => { autoAba = false; recI = +b.dataset.i; rec(); }));
 }
+let autoAba = true;
 rec();
+setInterval(() => { const r = document.getElementById("rec"); if (!autoAba || !r) return; const q = r.getBoundingClientRect(); if (q.bottom < 0 || q.top > innerHeight) return; recI = (recI + 1) % REC.length; rec(); }, 1700);
 
-iphone($("calcCel"), '<div class="appres"><div class="eb">— Preço e tempo</div><div class="cx" id="resCx"><div class="tt" id="resTit"></div><div class="vv" id="resVal"></div><div id="resTxt" style="font-size:12.5px;color:#cfccc2"></div></div>' +
-  '<div class="lin"><span>Custo da sua hora</span><b id="lH"></b></div><div class="lin"><span>Custo deste serviço</span><b id="lC"></b></div><div class="lin"><span>Você ganha por hora</span><b id="lG"></b></div><div class="bb">GERAR ORÇAMENTO</div></div>');
+iphone($("calcCel"), '<div class="app3"><div class="eb">— Passo 3 de 3</div><h4>Preço e tempo</h4>' +
+  '<div class="bx"><div class="eb" style="color:var(--mu);letter-spacing:1px">Marcos Vieira · RTX2B45</div><div style="font-weight:700;font-size:13px;margin:3px 0 4px">Hilux 2023 · Branco</div><div class="r"><span>Capô</span><b>2 amassados</b></div><div class="r"><span>Porta dianteira esquerda</span><b>3 amassados</b></div></div>' +
+  '<div><div class="lbl">Quanto vai cobrar (R$)</div><div class="in" id="aPreco">350</div></div>' +
+  '<div><div class="lbl">Tempo do serviço · <b id="aTempo" style="color:var(--fg)">4 h</b></div><div class="barra"><i id="aBarT"></i></div></div>' +
+  '<div><div class="lbl">Meta do mês</div><div class="barra"><i id="aBarM"></i></div></div>' +
+  '<div class="vdr" id="resCx"><div class="tt" id="resTit"></div><div class="vv" id="resVal"></div><div id="resTxt" style="font-size:10.5px;color:#cfccc2"></div><div style="font-size:10.5px;color:var(--mu);margin-top:4px">Hora: <b id="lH"></b> · ganha <b id="lG"></b>/h</div></div>' +
+  '<div class="bot"><div class="v">VOLTAR</div><div class="g">GERAR ORÇAMENTO</div></div></div>');
+// números que "rolam" até o valor novo
+const conta = (el, alvo, fmt, ms = 650) => { const de = +(el.dataset.v || 0), t0 = performance.now(); el.dataset.v = alvo; cancelAnimationFrame(el._raf);
+  const passo = (t) => { const k = Math.min(1, (t - t0) / ms), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(de + (alvo - de) * e); if (k < 1) el._raf = requestAnimationFrame(passo); }; el._raf = requestAnimationFrame(passo); };
+const pinta = (r) => r.style.setProperty("--p", ((r.value - r.min) / (r.max - r.min)) * 100 + "%");
 let ultimoLado = null;
 function calc() {
   const g = +$("gasto").value, h = +$("horas").value, p = +$("preco").value, t = +$("tempo").value;
   $("vGasto").textContent = brl0(g); $("vHoras").textContent = h + " h"; $("vPreco").textContent = brl0(p);
   $("vTempo").textContent = t < 1 ? "30 min" : String(t).replace(".", ",") + " h";
   const custoHora = g / h, custo = custoHora * t, lucro = p - custo, ganha = lucro >= 0;
-  $("resCx").className = "cx " + (ganha ? "ganha" : "perde");
+  $("resCx").className = "vdr " + (ganha ? "ganha" : "perde");
+  ["gasto", "horas", "preco", "tempo"].forEach((id) => pinta($(id)));
+  conta($("aPreco"), p, (v) => Math.round(v).toLocaleString("pt-BR")); $("aTempo").textContent = $("vTempo").textContent;
+  $("aBarT").style.width = Math.min(100, (t / 24) * 100) + "%"; $("aBarM").style.width = Math.min(100, Math.max(6, (p / 3000) * 100)) + "%";
+  $("aBarM").style.background = ganha ? "" : "linear-gradient(90deg,#8b1d1d,var(--bad))";
   $("resTit").textContent = ganha ? "Você está ganhando" : "Você está perdendo";
-  $("resVal").textContent = (ganha ? "+" : "−") + brl0(Math.abs(lucro));
+  conta($("resVal"), lucro, (v) => (v >= 0 ? "+" : "−") + brl0(Math.abs(v)));
   $("resTxt").textContent = ganha ? "acima do custo da sua oficina" : "você está pagando para trabalhar";
-  $("lH").textContent = brl(custoHora); $("lC").textContent = brl(custo); $("lG").textContent = brl(p / t);
+  $("lH").textContent = brl(custoHora); $("lG").textContent = brl(p / t);
   if (ultimoLado !== null && ultimoLado !== ganha) tom(ganha ? [880, 1320] : [330, 220], 0.2, 0.04, ganha ? "sine" : "square");
   ultimoLado = ganha;
 }
-["gasto", "horas", "preco", "tempo"].forEach((id) => ($(id).oninput = calc)); calc();
+let autoCalc = true;
+["gasto", "horas", "preco", "tempo"].forEach((id) => { $(id).oninput = calc; $(id).addEventListener("pointerdown", () => (autoCalc = false)); }); calc();
+// demonstração sozinha: o preço e o tempo vão mudando e o resultado vira de prejuízo para lucro e volta
+(() => { const cenas = [[180, 6], [260, 5], [350, 4], [600, 4], [900, 3], [1200, 5], [450, 8], [220, 9]]; let i = 0;
+  const vai = (el, alvo) => { const de = +el.value, t0 = performance.now(), ms = 900; const p = (t) => { const k = Math.min(1, (t - t0) / ms), e = 1 - Math.pow(1 - k, 3); el.value = de + (alvo - de) * e; calc(); if (k < 1 && autoCalc) requestAnimationFrame(p); }; requestAnimationFrame(p); };
+  setInterval(() => { const c = $("calc").getBoundingClientRect(); if (!autoCalc || c.bottom < 0 || c.top > innerHeight) return; const [pr, tp] = cenas[i++ % cenas.length]; vai($("preco"), pr); vai($("tempo"), tp); }, 1900); })();
 
 let PLANOS = [
   { id: "pro-anual", nome: "Profissional", ciclo: "anual", preco_mes: 39.9, modulos: ["orc", "age", "cx"] },
@@ -514,8 +629,10 @@ function planos() {
       <a class="btn g" href="https://app.ipdrx.com.br/assinar/?plano=${p.id}&ciclo=${p.ciclo}">Assinar ${p.nome} →</a></div>`;
   }).join("");
 }
-$("cAnual").onclick = () => { ciclo = "anual"; planos(); };
-$("cMensal").onclick = () => { ciclo = "mensal"; planos(); };
+let autoCiclo = true;
+$("cAnual").onclick = () => { autoCiclo = false; ciclo = "anual"; planos(); };
+$("cMensal").onclick = () => { autoCiclo = false; ciclo = "mensal"; planos(); };
+setInterval(() => { const pl = $("planos").getBoundingClientRect(); if (!autoCiclo || pl.bottom < 0 || pl.top > innerHeight) return; ciclo = ciclo === "anual" ? "mensal" : "anual"; planos(); document.querySelectorAll(".plano .preco").forEach((x) => x.classList.add("troca")); passa(); }, 4000);
 planos();
 fetch("https://vakoammvzbybptukvqnr.supabase.co/functions/v1/assinar", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ acao: "planos" }) })
   .then((r) => r.json()).then((j) => { if (j.planos && j.planos.length) { PLANOS = j.planos; planos(); } }).catch(() => {});
