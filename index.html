@@ -298,7 +298,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 
 /* fotos fundidas no fundo da página: sem quadro, sem borda, bordas somem no preto */
 .mao2,.b1{border-radius:0!important;box-shadow:none!important;overflow:visible!important;max-width:620px!important}
-.mao2>img,.b1>img{-webkit-mask-image:radial-gradient(ellipse 58% 56% at 52% 52%,#000 38%,transparent 100%);mask-image:radial-gradient(ellipse 58% 56% at 52% 52%,#000 38%,transparent 100%)}
+.mao2>img,.b1>img{-webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 50%,#000 55%,transparent 100%)}
 .b1 .palco{overflow:visible}
 .vid{grid-template-columns:1.1fr .9fr!important}
 .sim .w{grid-template-columns:.9fr 1.1fr!important}
@@ -388,6 +388,19 @@ p.mu,p.lead{max-width:600px}
 .plano li.simli.tem:before{color:var(--neon);left:8px}
 .plano li.simli.tem:after{content:"SIMULADOR INCLUSO";position:absolute;right:6px;top:50%;transform:translateY(-50%);font:800 9.5px Inter;letter-spacing:.6px;color:#001522;background:var(--neon);padding:3px 6px;border-radius:6px}
 @keyframes acende{0%{opacity:.2;transform:scale(.97)}60%{opacity:1;transform:scale(1.03)}100%{transform:none}}
+
+/* VERSÃO COMPUTADOR: usa a largura da tela (sem faixa sobrando dos lados) */
+@media (min-width:1280px){
+ .w{max-width:min(1500px,90vw)!important;padding:0 40px}
+ h1{font-size:clamp(64px,5.2vw,96px)!important}
+ h2{font-size:clamp(44px,3.4vw,64px)!important}
+ p.lead{font-size:21px!important;max-width:680px}
+ p.mu,p.lead{max-width:680px}
+ .mao2{max-width:880px!important}
+ .devs{max-width:1300px!important}
+}
+/* foto da mão: o apagado vem gravado na foto (a máscara some quando o vídeo toca por cima) */
+.mao2>img{-webkit-mask-image:none!important;mask-image:none!important}
 </style>
 </head>
 <body>
@@ -430,7 +443,7 @@ p.mu,p.lead{max-width:600px}
 </div></section>
 
 <section class="luzes"><div class="w vid">
-  <div class="mao2 rv" id="mao"><img src="img/mao-a2.webp" alt="Mão de mecânico segurando o celular com o vídeo do Martelinho Pro" id="maoImg">
+  <div class="mao2" id="mao"><img src="img/mao-a2-fade.webp" alt="Mão de mecânico segurando o celular com o vídeo do Martelinho Pro" id="maoImg">
     <div class="tv2" id="tv"><video id="video" src="img/martelinho-pro.mp4" poster="img/video-capa.webp" playsinline preload="none"></video><div class="brilho"></div></div>
     <button class="tocar" id="play" aria-label="Assistir ao vídeo"><span><svg width="30" height="30" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="#141000"/></svg></span></button>
   </div>
@@ -454,7 +467,7 @@ p.mu,p.lead{max-width:600px}
   <h2 class="rv luzw" style="margin-top:12px">A sua oficina <span class="gold">em qualquer tela</span></h2>
   <p class="mu rv" style="font-size:18px;max-width:720px;margin:14px auto 0">Orçamento no celular, agenda no tablet, fechamento no computador. Mesma conta.</p>
 </div>
-<div class="devs rv" id="devs"><img src="img/aparelhos.webp" alt="Computador, notebook, tablet e celular com o Martelinho Pro"></div>
+<div class="devs" id="devs"><img src="img/aparelhos.webp" alt="Computador, notebook, tablet e celular com o Martelinho Pro"></div>
 </section>
 
 <section class="sim luzes" id="simulador"><div class="w">
@@ -655,7 +668,12 @@ document.addEventListener("pointerdown", (e) => { const b = e.target.closest && 
     return [a / w, dd / w, 0, g / w, b / h, e / h, 0, hh / h, 0, 0, 1, 0, c, ff, 0, 1]; }
   const ajusta = () => { const W = box.clientWidth, H = box.clientHeight, w = 300, h = 640;
     tv.style.width = w + "px"; tv.style.height = h + "px";
-    tv.style.transform = "matrix3d(" + homog(w, h, Q.map(([x, y]) => [x * W, y * H])).join(",") + ")"; };
+    /* encaixe plano (sem 3D): o 3D criava um quadrado cinza em volta da foto em vários PCs */
+    const P = Q.map(([x, y]) => [x * W, y * H]);
+    const a = ((P[1][0]-P[0][0]) + (P[2][0]-P[3][0])) / 2 / w, b = ((P[1][1]-P[0][1]) + (P[2][1]-P[3][1])) / 2 / w;
+    const c = ((P[3][0]-P[0][0]) + (P[2][0]-P[1][0])) / 2 / h, d = ((P[3][1]-P[0][1]) + (P[2][1]-P[1][1])) / 2 / h;
+    const cx = (P[0][0]+P[1][0]+P[2][0]+P[3][0]) / 4, cy = (P[0][1]+P[1][1]+P[2][1]+P[3][1]) / 4;
+    tv.style.transform = "matrix(" + [a, b, c, d, cx - (a*w/2 + c*h/2), cy - (b*w/2 + d*h/2)].join(",") + ")"; };
   $("maoImg").complete ? ajusta() : $("maoImg").addEventListener("load", ajusta); addEventListener("resize", ajusta); })();
 
 
