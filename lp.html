@@ -381,6 +381,12 @@ p.mu,p.lead{max-width:600px}
 .curso .vivo i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#25d366,rgba(37,211,102,.1));animation:sobeDesce 1.6s ease-in-out infinite}
 @keyframes sobeDesce{0%,100%{height:var(--a)}50%{height:var(--b)}}
 .curso>div,.curso>a{position:relative;z-index:1}
+
+.plano li.simli{transition:color .4s,background .4s}
+.plano li.simli.tem{color:#e6f8ff;font-weight:700;background:linear-gradient(90deg,rgba(47,184,255,.18),transparent);border-radius:8px;padding-left:34px;margin-left:-6px;animation:acende .7s ease}
+.plano li.simli.tem:before{color:var(--neon);left:8px}
+.plano li.simli.tem:after{content:"SIMULADOR INCLUSO";position:absolute;right:6px;top:50%;transform:translateY(-50%);font:800 9.5px Inter;letter-spacing:.6px;color:#001522;background:var(--neon);padding:3px 6px;border-radius:6px}
+@keyframes acende{0%{opacity:.2;transform:scale(.97)}60%{opacity:1;transform:scale(1.03)}100%{transform:none}}
 </style>
 </head>
 <body>
@@ -394,12 +400,12 @@ p.mu,p.lead{max-width:600px}
   <div>
     <span class="eyebrow">O app do martelinho de ouro</span>
     <h1 class="luzw">Você domina o martelinho.<br><span class="gold">Agora domine o seu negócio.</span></h1>
-    <p class="lead">Orçamento com a <b>sua logo</b>, preço com lucro, agenda com alarme e o caixa do mês. Tudo no celular.</p>
+    <p class="lead">Orçamento com a <b>sua logo</b>, que o seu cliente <b>aprova e assina</b>. Agenda que te avisa a cada carro. Controle de tudo que entra e sai. E um <b>simulador de amassados</b>.</p>
     <div class="ctas">
       <a class="btn g" href="https://app.ipdrx.com.br/">Testar 7 dias grátis →</a>
       <a class="btn o" href="#como">Ver como funciona</a>
     </div>
-    <div class="selos"><span>✓ <b>7 dias grátis</b>, com tudo liberado</span><span>✓ Celular e computador</span><span>✓ Funciona sem internet</span></div>
+    <div class="selos"><span>✓ <b>7 dias grátis</b>, com tudo liberado</span><span>✓ Celular + computador</span><span>✓ Funciona sem internet</span></div>
   </div>
   <div class="hz"><div class="phone" data-telas="01-home,03-carro,07-preco-lucro,09-agenda,12-caixa"></div>
     <div class="notif n0"><div class="ic" style="background:#25D366"><svg viewBox="0 0 70 70" width="38" height="38"><path d="M35 14a20 20 0 00-17.3 30l-2.7 10 10.3-2.7A20 20 0 1035 14z" fill="#fff"/></svg></div><div><div style="display:flex"><b>Marcos Vieira</b><span class="ag">agora</span></div><div class="tx">Pode fazer! Aprovado o orçamento da Hilux 👍</div></div></div>
@@ -414,10 +420,10 @@ p.mu,p.lead{max-width:600px}
   <div class="dores">
     <div class="dor rv"><div class="x">✕</div><h3>Preço no chute</h3><p>Você olha o amassado, pensa num número e torce para dar lucro. No fim do mês, não sabe se ganhou ou se pagou para trabalhar.</p></div>
     <div class="dor rv"><div class="x">✕</div><h3>Choro de desconto</h3><p>O cliente aprova pelo WhatsApp e, na hora de entregar, pede desconto. Sem nada combinado por escrito, você cede.</p></div>
-    <div class="dor rv"><div class="x">✕</div><h3>Orçamento amador</h3><p>Foto torta e preço escrito na conversa. O cliente compara com o vizinho e acha caro, porque não viu valor.</p></div>
-    <div class="dor rv"><div class="x">✕</div><h3>Agenda perdida no WhatsApp</h3><p>Carro marcado no meio de 50 conversas. Você esquece o horário, o cliente chega e a bancada está ocupada.</p></div>
+    <div class="dor rv"><div class="x">✕</div><h3>Orçamento amador</h3><p>Foto sem qualidade e rascunho no papel. O cliente compara com a concorrência e, às vezes, por causa de uma foto, fecha com o seu concorrente.</p></div>
+    <div class="dor rv"><div class="x">✕</div><h3>Agenda perdida no WhatsApp</h3><p>Carro marcado no meio de 50 conversas. Você esquece o horário, o cliente chega e a loja está cheia.</p></div>
     <div class="dor rv"><div class="x">✕</div><h3>Dinheiro que some</h3><p>Entra serviço, sai ferramenta, cola, gasolina... e você não sabe quanto sobrou de verdade no mês.</p></div>
-    <div class="dor rv"><div class="x">✕</div><h3>Treino só no carro do cliente</h3><p>Quem está começando aprende errando na lataria dos outros. Um erro e o lucro vira prejuízo.</p></div>
+    <div class="dor rv"><div class="x">✕</div><h3>Treino só no carro do cliente</h3><p>Quem está começando não tem tanta confiança. Errar no carro do cliente é prejuízo na certa. Aqui você treina antes, em outro ambiente.</p></div>
   </div>
   <p class="vira rv">O Martelinho Pro resolve <span class="gold">cada um desses problemas</span>.</p>
 </div></section>
@@ -511,13 +517,13 @@ p.mu,p.lead{max-width:600px}
 <section style="padding-top:20px"><div class="w">
   <h2 class="rv luzw" style="text-align:center">Perguntas <span class="gold">frequentes</span></h2>
   <div class="faq rv">
-    <details><summary>Como funciona o teste grátis?</summary><p>Você cria o seu acesso com o seu e-mail e usa tudo liberado por 7 dias, sem cartão. No fim, escolhe o plano que faz sentido para você. Seus orçamentos, clientes e agenda continuam guardados.</p></details>
-    <details><summary>Funciona no celular e no computador?</summary><p>Sim. Funciona no Android, no iPhone e no computador (pelo navegador), com a mesma conta. O que você faz no celular aparece no computador.</p></details>
+    <details><summary>Como funciona o teste grátis?</summary><p>Você cria o seu acesso e usa <b>tudo liberado por 7 dias, até o simulador</b>, sem cartão. Tudo o que você fizer no teste (agenda, orçamentos, clientes, entradas e saídas) <b>fica guardado</b>. Escolheu um plano? Continua usando tudo de onde parou. Não escolheu? O app fica bloqueado e você perde o acesso a tudo isso.</p></details>
+    <details><summary>Funciona no celular e no computador?</summary><p>Sim, com a mesma conta e tudo sincronizado. Mas atenção: cada conta usa <b>1 celular + 1 computador</b>. Não dá para usar em vários celulares nem em vários computadores, mesmo que sejam seus. Quer usar em outro aparelho? A gente libera a troca.</p></details>
     <details><summary>Precisa de internet?</summary><p>Não para trabalhar. Você faz orçamento, agenda e caixa sem internet; quando o sinal volta, o app guarda tudo na sua conta.</p></details>
-    <details><summary>Qual a diferença entre Profissional e Prime?</summary><p>O Profissional tem Orçamento, Agenda e Caixa. O Prime tem tudo isso e mais o Simulador de treino, para praticar os amassados em peças 3D antes de encostar no carro do cliente.</p></details>
-    <details><summary>Como eu pago?</summary><p>No cartão de crédito (o anual sai em até 12x sem juros), no Pix ou no boleto. Assim que o pagamento cai, o acesso libera sozinho.</p></details>
-    <details><summary>Posso cancelar?</summary><p>Pode. No plano mensal você cancela quando quiser. É só falar com a gente no WhatsApp.</p></details>
-    <details><summary>Meus dados ficam seguros?</summary><p>Sim. Seus orçamentos e clientes ficam na sua conta, protegidos, e ninguém mais tem acesso. Você pode pedir a exclusão da conta quando quiser.</p></details>
+    <details><summary>Qual a diferença entre Profissional e Prime?</summary><p>O <b>Profissional</b> tem Orçamento, Agenda e Caixa. O <b>Prime</b> tem tudo isso <b>e o Simulador de treino</b>, para praticar o amassado em 3D antes de encostar no carro do cliente.</p></details>
+    <details><summary>Como eu pago?</summary><p>No cartão de crédito (o anual sai em até 12x sem juros), no Pix ou no boleto. Pagou, o acesso libera na hora. <b>Venceu e não pagou?</b> Depois do prazo, o app inteiro fica bloqueado, inclusive a agenda, e só volta quando o pagamento cair.</p></details>
+    <details><summary>Posso cancelar?</summary><p>Pode. No plano mensal você cancela quando quiser, sem multa.</p></details>
+    <details><summary>Meus dados ficam seguros?</summary><p>Sim. Seus dados ficam na <b>sua conta</b> e só você acessa, com o seu e-mail e a sua senha. Ninguém mais vê. Mas atenção: se você <b>excluir a conta, todos os seus dados são apagados</b> junto.</p></details>
   </div>
 </div></section>
 
@@ -534,7 +540,7 @@ p.mu,p.lead{max-width:600px}
 
 <footer><div class="w">
   <div><b style="color:var(--fg)">IPDRX · Martelinho Pro</b><br>Dúvidas: <a href="https://wa.me/5537999999921" target="_blank" rel="noopener">WhatsApp (37) 99999-9921</a> · <a href="mailto:ipdrmartelinho@gmail.com">ipdrmartelinho@gmail.com</a></div>
-  <nav><a href="legal/termos.html">Termos de Uso</a><a href="legal/privacidade.html">Privacidade</a><a href="legal/suporte.html">Suporte</a></nav>
+  <nav><a href="legal/termos.html">Termos de Uso</a><a href="legal/privacidade.html">Privacidade</a><a href="https://wa.me/5537999999921?text=Ol%C3%A1!%20Preciso%20de%20suporte%20no%20Martelinho%20Pro." target="_blank" rel="noopener">Suporte</a></nav>
 </div></footer>
 
 <audio id="musica" src="img/musica.mp3" loop preload="none"></audio>
@@ -592,7 +598,7 @@ const sc = $("simCel"); if (sc) { iphone(sc, '<video src="' + sc.dataset.video +
     if (v >= 100) tom([988, 1319, 1760], 0.4, 0.04); else tom([600 + v * 9], 0.035, 0.018, "triangle"); }, 260); })();
 
 // WhatsApp do curso treme de vez em quando quando está na tela
-setInterval(() => { const z = $("zapCurso"); if (!z) return; const r = z.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; z.classList.remove("treme"); void z.offsetWidth; z.classList.add("treme"); }, 3000);
+setInterval(() => { const z = $("zapCurso"); if (!z) return; const r = z.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; z.classList.remove("treme"); void z.offsetWidth; z.classList.add("treme"); tom([880, 880, 880], 0.06, 0.02, "square"); }, 3000);
 // som: clique, plim de notificação (Web Audio, bem baixinho; o botão 🔊 desliga)
 let somOn = true, AC = null, mexeu = false;
 try { somOn = localStorage.getItem("mp_som") !== "0"; } catch (_) {}
@@ -732,7 +738,7 @@ function planos() {
       <h3 class="${prime ? "neon" : "gold"}">${p.nome}</h3>
       <div class="preco">${brl(p.preco_mes)}<small> /mês</small></div>
       <div class="total">${p.ciclo === "anual" ? `12x sem juros · ${brl(p.preco_mes * 12)} por ano` : "Cobrança mensal · cancele quando quiser"}</div>
-      <ul>${MOD.map(([m, t]) => `<li class="${(p.modulos || []).includes(m) ? "" : "nao"}">${t}</li>`).join("")}<li>Celular e computador</li></ul>
+      <ul>${MOD.map(([m, t]) => `<li class="${(p.modulos || []).includes(m) ? (m === "sim" ? "simli tem" : "") : (m === "sim" ? "simli nao" : "nao")}">${t}</li>`).join("")}<li>1 celular + 1 computador</li></ul>
       <a class="btn g" href="https://app.ipdrx.com.br/assinar/?plano=${p.id}&ciclo=${p.ciclo}">Assinar ${p.nome} →</a></div>`;
   }).join("");
 }
