@@ -674,9 +674,11 @@ function rec() {
   iphone($("recCel"), '<img class="on" src="img/' + r.img + '.webp" alt="' + r.k + ' no Martelinho Pro">');
   document.querySelectorAll(".aba").forEach((b) => (b.onclick = () => { autoAba = false; recI = +b.dataset.i; rec(); }));
 }
-let autoAba = true;
+let autoAba = true, pausaAba = false;
 rec();
-setInterval(() => { const r = document.getElementById("rec"); if (!autoAba || !r) return; const q = r.getBoundingClientRect(); if (q.bottom < 0 || q.top > innerHeight) return; recI = (recI + 1) % REC.length; rec(); const a = document.querySelector('.aba[data-i="' + recI + '"]'); if (a) { a.classList.add("toque"); } clique(); }, 1700);
+// mouse ou dedo em cima: para de trocar para a pessoa ler; saiu, volta a trocar
+["abas","rec"].forEach((id) => { const el = document.getElementById(id); el.addEventListener("pointerenter", () => (pausaAba = true)); el.addEventListener("pointerleave", () => (pausaAba = false)); el.addEventListener("touchstart", () => { pausaAba = true; clearTimeout(window.__tAba); window.__tAba = setTimeout(() => (pausaAba = false), 8000); }, { passive: true }); });
+setInterval(() => { const r = document.getElementById("rec"); if (!autoAba || pausaAba || !r) return; const q = r.getBoundingClientRect(); if (q.bottom < 0 || q.top > innerHeight) return; recI = (recI + 1) % REC.length; rec(); const a = document.querySelector('.aba[data-i="' + recI + '"]'); if (a) { a.classList.add("toque"); } clique(); }, 1700);
 
 iphone($("calcCel"), '<div class="app3"><div class="eb">— Passo 3 de 3</div><h4>Preço e tempo</h4>' +
   '<div class="bx"><div class="eb" style="color:var(--mu);letter-spacing:1px">Marcos Vieira · RTX2B45</div><div style="font-weight:700;font-size:13px;margin:3px 0 4px">Hilux 2023 · Branco</div><div class="r"><span>Capô</span><b>2 amassados</b></div><div class="r"><span>Porta dianteira esquerda</span><b>3 amassados</b></div></div>' +
