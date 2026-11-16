@@ -119,7 +119,7 @@ section{padding:90px 0;position:relative}
 .appres .lin b{color:var(--fg)}
 .appres .bb{margin-top:6px;border-radius:12px;padding:12px;text-align:center;font:800 16px/1 "Barlow Condensed";letter-spacing:.6px;color:var(--ink);background:linear-gradient(180deg,var(--goldHi),var(--gold) 45%,var(--goldLo))}
 .appres .eb{color:var(--gold);font:700 11px Inter;letter-spacing:2px;text-transform:uppercase}
-.sim{background:radial-gradient(800px 500px at 70% 40%,rgba(47,184,255,.13),transparent 60%)}
+.sim{}
 .sim .w{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
 .sim .exclusivo{display:inline-block;background:var(--neon);color:#001522;font:800 13px Inter;padding:7px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:14px}
 .sim h2{color:var(--fg)}
@@ -349,6 +349,13 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 .btn.zap{box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:zapPulsa 2.2s infinite}
 @keyframes zapPulsa{70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 @media (max-width:860px){.sim .w,.vid{grid-template-columns:1fr!important}.mao2{max-width:100%!important}}
+
+/* a mesma iluminação da foto dos aparelhos (dourado de um lado, azul do outro, chão brilhando) atrás das seções com celular */
+.luzes{position:relative;isolation:isolate}
+.luzes:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(42% 60% at 6% 45%,rgba(245,184,0,.20),transparent 70%),radial-gradient(42% 60% at 94% 45%,rgba(47,184,255,.20),transparent 70%),
+  radial-gradient(60% 18% at 50% 100%,rgba(245,184,0,.10),transparent 70%),linear-gradient(180deg,transparent,rgba(255,255,255,.015) 80%,transparent)}
+.luzes:after{content:"";position:absolute;left:8%;right:8%;bottom:6%;height:1px;z-index:-1;background:linear-gradient(90deg,transparent,rgba(245,184,0,.5),rgba(47,184,255,.5),transparent);filter:blur(1px);opacity:.6}
 </style>
 </head>
 <body>
@@ -390,7 +397,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   <p class="vira rv">O Martelinho Pro resolve <span class="gold">cada um desses problemas</span>.</p>
 </div></section>
 
-<section><div class="w vid">
+<section class="luzes"><div class="w vid">
   <div class="mao2 rv" id="mao"><img src="img/mao-a2.webp" alt="Mão de mecânico segurando o celular com o vídeo do Martelinho Pro" id="maoImg">
     <div class="tv2" id="tv"><video id="video" src="img/martelinho-pro.mp4" poster="img/video-capa.webp" playsinline preload="none"></video><div class="brilho"></div></div>
     <button class="tocar" id="play" aria-label="Assistir ao vídeo"><span><svg width="30" height="30" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="#141000"/></svg></span></button>
@@ -403,7 +410,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   </div>
 </div></section>
 
-<section id="como"><div class="w">
+<section id="como" class="luzes"><div class="w">
   <span class="eyebrow rv">Como funciona</span>
   <h2 class="rv luzw" style="margin-top:12px">Tudo o que a sua oficina precisa,<br><span class="gold">em um app só</span></h2>
   <div class="abas rv" id="abas"></div>
@@ -418,7 +425,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 <div class="devs rv" id="devs"><img src="img/aparelhos.webp" alt="Computador, notebook, tablet e celular com o Martelinho Pro"></div>
 </section>
 
-<section class="sim" id="simulador"><div class="w">
+<section class="sim luzes" id="simulador"><div class="w">
   <div class="rv">
     <span class="exclusivo">EXCLUSIVO · SÓ NO MARTELINHO PRO</span>
     <h2 class="luzw">Treine o amassado <span class="neon">antes de encostar</span> no carro do cliente</h2>
@@ -429,7 +436,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   <div class="rv"><div class="simCel"><div class="phone" data-telas="21-sim-peca" style="width:min(320px,74vw)"></div><div class="pct"><div><b id="simPct">0%</b><span>ACABAMENTO</span></div></div></div></div>
 </div></section>
 
-<section id="calc"><div class="w">
+<section id="calc" class="luzes"><div class="w">
   <span class="eyebrow rv">Faça a conta agora</span>
   <h2 class="rv luzw" style="margin-top:12px">Esse serviço está te dando <span class="gold">lucro</span>?</h2>
   <p class="mu rv" style="font-size:18px;max-width:700px">Arraste e veja. É a mesma conta que o Martelinho Pro faz em cada orçamento, com os números da sua oficina.</p>
@@ -444,7 +451,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   </div>
 </div></section>
 
-<section><div class="w orc">
+<section class="luzes"><div class="w orc">
   <div class="rv"><div class="phone" id="orcCel" data-telas="orcamento-imagem"></div></div>
   <div class="rv">
     <span class="eyebrow">O app é seu, com a sua marca</span>
