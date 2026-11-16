@@ -401,6 +401,35 @@ p.mu,p.lead{max-width:600px}
 }
 /* foto da mão: o apagado vem gravado na foto (a máscara some quando o vídeo toca por cima) */
 .mao2>img{-webkit-mask-image:none!important;mask-image:none!important}
+
+/* ===== VERSÃO CELULAR: tudo na mesma proporção ===== */
+.selo-logo{display:flex!important;align-items:flex-start;gap:10px;line-height:1.4}
+.selo-logo .si{flex-shrink:0}
+@media (max-width:640px){
+ .top .w{height:56px;gap:10px}
+ .marca{gap:8px;font-size:17px;white-space:nowrap;min-width:0}
+ .marca img{height:18px}
+ .top .btn.g{padding:8px 12px;font-size:13px;white-space:nowrap;flex-shrink:0}
+ p.lead{font-size:16.5px!important}
+ .selos{flex-direction:column;gap:8px;font-size:14px}
+ .selo-logo{font-size:14px;padding:10px 12px;margin:12px 0}
+ p.mu{font-size:16px!important}
+ /* frase: notificações do tamanho de uma notificação de verdade */
+ .frase{padding-top:40px!important;padding-bottom:40px!important}
+ .frase .iosn{padding:12px 14px;border-radius:22px;gap:11px}
+ .frase .iosn .ic,.frase .iosn .ic img{width:38px;height:38px;border-radius:9px}
+ .frase .iosn .t1{font-size:13px}.frase .iosn .t1 span{font-size:12px}
+ .frase .iosn .t2{font-size:20px;margin-top:3px}
+ .frase .iosn .t3{font-size:12px}
+ .frase .pilha .iosn+.iosn{margin-top:8px}
+ /* perguntas: discretas */
+ .faq{margin-top:18px}
+ .faq summary{font:600 15px/1.3 Inter;text-transform:none;padding:14px 32px 14px 0}
+ .faq summary:after{top:9px;font-size:22px}
+ .faq p{font-size:14.5px;margin-bottom:14px}
+ .frase .pilha{min-height:0!important}
+ #planos{padding-top:36px!important}
+}
 </style>
 </head>
 <body>
@@ -502,7 +531,7 @@ p.mu,p.lead{max-width:600px}
     <span class="eyebrow">O app é seu, com a sua marca</span>
     <h2 class="luzw" style="margin:12px 0 10px">A <span class="gold">SUA logo</span> em tudo.<br>Não a nossa.</h2>
     <p style="font-size:20px;margin:0 0 10px">Seu cliente não vê "Martelinho Pro". Ele vê <b class="gold">a sua oficina</b>: o seu nome, a sua logo, o seu telefone, num orçamento que parece de concessionária.</p>
-    <div class="selo-logo">🛡️ A marca <b>Martelinho Pro</b> não aparece em nada que o seu cliente recebe.</div>
+    <div class="selo-logo"><span class="si">🛡️</span><span>A marca <b>Martelinho Pro</b> não aparece em nada que o seu cliente recebe.</span></div>
     <p class="mu" style="font-size:18px">O cliente enxerga uma empresa e para de pedir desconto. Ele aprova na hora e o preço fica combinado.</p>
     <div class="passos">
       <div class="passo"><div><b>Toque no carro 3D</b><br><span class="mu">Marque as peças amassadas e quantos amassados tem em cada uma.</span></div></div>
