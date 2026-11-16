@@ -356,6 +356,31 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   background:radial-gradient(42% 60% at 6% 45%,rgba(245,184,0,.20),transparent 70%),radial-gradient(42% 60% at 94% 45%,rgba(47,184,255,.20),transparent 70%),
   radial-gradient(60% 18% at 50% 100%,rgba(245,184,0,.10),transparent 70%),linear-gradient(180deg,transparent,rgba(255,255,255,.015) 80%,transparent)}
 .luzes:after{content:"";position:absolute;left:8%;right:8%;bottom:6%;height:1px;z-index:-1;background:linear-gradient(90deg,transparent,rgba(245,184,0,.5),rgba(47,184,255,.5),transparent);filter:blur(1px);opacity:.6}
+
+/* NADA DE CORTE ENTRE AS SEÇÕES: a luz de cada seção vaza para cima e para baixo e some devagar */
+.luzes:before{inset:-180px 0!important;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%)}
+.luzes:after{display:none}
+.hero{background:none!important}
+.hero:before{content:"";position:absolute;left:0;right:0;top:0;bottom:-220px;z-index:-1;pointer-events:none;
+  background:radial-gradient(900px 520px at 75% 32%,rgba(245,184,0,.13),transparent 62%),radial-gradient(700px 500px at 8% 85%,rgba(47,184,255,.09),transparent 62%);
+  -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+.hero{isolation:isolate}
+section{overflow:visible}
+/* foto dos aparelhos: o chão some no preto antes de acabar */
+.devs>img{-webkit-mask-image:radial-gradient(ellipse 60% 62% at 50% 44%,#000 52%,transparent 96%);mask-image:radial-gradient(ellipse 60% 62% at 50% 44%,#000 52%,transparent 96%)}
+.devs{margin-bottom:-40px}
+/* a conta e o orçamento mais perto, sem buraco */
+#calc{padding-bottom:30px}
+#calc + section{padding-top:30px}
+/* textos mais leves de ler */
+p.mu,p.lead{max-width:600px}
+.dor p{font-size:14.5px}
+/* WhatsApp do curso: gráfico vivo no fundo do quadro */
+.curso{position:relative;overflow:hidden}
+.curso .vivo{position:absolute;right:0;bottom:0;width:46%;height:100%;pointer-events:none;opacity:.35;display:flex;align-items:flex-end;gap:6px;padding:0 24px 18px}
+.curso .vivo i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#25d366,rgba(37,211,102,.1));animation:sobeDesce 1.6s ease-in-out infinite}
+@keyframes sobeDesce{0%,100%{height:var(--a)}50%{height:var(--b)}}
+.curso>div,.curso>a{position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -369,7 +394,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   <div>
     <span class="eyebrow">O app do martelinho de ouro</span>
     <h1 class="luzw">Você domina o martelinho.<br><span class="gold">Agora domine o seu negócio.</span></h1>
-    <p class="lead">Orçamento com carro 3D e a <b>sua logo</b>, o preço certo para não trabalhar no prejuízo, agenda com alarme e o caixa do mês. Tudo no celular, feito por quem vive o martelinho de ouro todo dia.</p>
+    <p class="lead">Orçamento com a <b>sua logo</b>, preço com lucro, agenda com alarme e o caixa do mês. Tudo no celular.</p>
     <div class="ctas">
       <a class="btn g" href="https://app.ipdrx.com.br/">Testar 7 dias grátis →</a>
       <a class="btn o" href="#como">Ver como funciona</a>
@@ -405,7 +430,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   <div class="rv">
     <span class="eyebrow">1 minuto</span>
     <h2 style="margin:12px 0 16px">Veja o app <span class="gold">funcionando de verdade</span></h2>
-    <p class="mu" style="font-size:18px">Do orçamento com a sua logo até a aprovação do cliente pelo celular. Do alarme do carro chegando ao fechamento do mês. Sem planilha, sem caderno, sem conversa perdida.</p>
+    <p class="mu" style="font-size:18px">Do orçamento até o fechamento do mês. Sem planilha, sem caderno, sem conversa perdida.</p>
     <a class="btn g" style="margin-top:14px" href="https://app.ipdrx.com.br/">Quero testar grátis →</a>
   </div>
 </div></section>
@@ -420,7 +445,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 <section id="aparelhos" style="padding-bottom:40px"><div class="w devsTit">
   <span class="eyebrow rv">Celular, tablet e computador</span>
   <h2 class="rv luzw" style="margin-top:12px">A sua oficina <span class="gold">em qualquer tela</span></h2>
-  <p class="mu rv" style="font-size:18px;max-width:720px;margin:14px auto 0">Faça o orçamento no celular, confira a agenda no tablet e feche o mês no computador. Mesma conta, tudo junto, na hora.</p>
+  <p class="mu rv" style="font-size:18px;max-width:720px;margin:14px auto 0">Orçamento no celular, agenda no tablet, fechamento no computador. Mesma conta.</p>
 </div>
 <div class="devs rv" id="devs"><img src="img/aparelhos.webp" alt="Computador, notebook, tablet e celular com o Martelinho Pro"></div>
 </section>
@@ -429,7 +454,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
   <div class="rv">
     <span class="exclusivo">EXCLUSIVO · SÓ NO MARTELINHO PRO</span>
     <h2 class="luzw">Treine o amassado <span class="neon">antes de encostar</span> no carro do cliente</h2>
-    <p class="mu" style="font-size:18px;margin:16px 0 0">Nenhum outro app tem isso. Você escolhe a peça em 3D, o tipo de amassado e treina como se estivesse na bancada: o simulador mostra onde trabalhar, a ferramenta certa e a porcentagem de acabamento a cada toque.</p>
+    <p class="mu" style="font-size:18px;margin:16px 0 0">Nenhum outro app tem isso. Escolha a peça, o amassado e treine: o simulador mostra onde trabalhar e o acabamento a cada toque.</p>
     <ul><li>Peças 3D: porta, capô, para-lama, teto e mais</li><li>Tipos de amassado: granizo, vinco, risco, esticado</li><li>Mostra onde e como trabalhar, passo a passo</li><li>Porcentagem de acabamento ao vivo</li></ul>
     <a class="btn g" href="#planos">Quero o Prime com Simulador →</a>
   </div>
@@ -439,7 +464,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 <section id="calc" class="luzes"><div class="w">
   <span class="eyebrow rv">Faça a conta agora</span>
   <h2 class="rv luzw" style="margin-top:12px">Esse serviço está te dando <span class="gold">lucro</span>?</h2>
-  <p class="mu rv" style="font-size:18px;max-width:700px">Arraste e veja. É a mesma conta que o Martelinho Pro faz em cada orçamento, com os números da sua oficina.</p>
+  <p class="mu rv" style="font-size:18px;max-width:700px">A mesma conta que o app faz em cada orçamento.</p>
   <div class="calc">
     <div class="card rv">
       <div class="campo"><label>Gastos da oficina por mês (aluguel, luz, ferramentas…) <b id="vGasto"></b></label><input type="range" id="gasto" min="500" max="15000" step="100" value="5500"></div>
@@ -458,7 +483,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
     <h2 class="luzw" style="margin:12px 0 10px">A <span class="gold">SUA logo</span> em tudo.<br>Não a nossa.</h2>
     <p style="font-size:20px;margin:0 0 10px">Seu cliente não vê "Martelinho Pro". Ele vê <b class="gold">a sua oficina</b>: o seu nome, a sua logo, o seu telefone, num orçamento que parece de concessionária.</p>
     <div class="selo-logo">🛡️ A marca <b>Martelinho Pro</b> não aparece em nada que o seu cliente recebe.</div>
-    <p class="mu" style="font-size:18px">É isso que faz o cliente parar de pedir desconto: ele enxerga uma empresa, não um cara com um martelo. E ele aprova na hora, então na entrega o preço já está combinado.</p>
+    <p class="mu" style="font-size:18px">O cliente enxerga uma empresa e para de pedir desconto. Ele aprova na hora e o preço fica combinado.</p>
     <div class="passos">
       <div class="passo"><div><b>Toque no carro 3D</b><br><span class="mu">Marque as peças amassadas e quantos amassados tem em cada uma.</span></div></div>
       <div class="passo"><div><b>Veja se o preço dá lucro</b><br><span class="mu">O app mostra o valor da sua hora e avisa se você está ganhando ou perdendo.</span></div></div>
@@ -497,7 +522,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 </div></section>
 
 <section style="padding-top:30px"><div class="w">
-  <div class="curso rv">
+  <div class="curso rv"><div class="vivo"><i style="--a:15%;--b:30%;animation-delay:0s"></i><i style="--a:27.5%;--b:55%;animation-delay:0.15s"></i><i style="--a:20%;--b:40%;animation-delay:0.3s"></i><i style="--a:35%;--b:70%;animation-delay:0.44999999999999996s"></i><i style="--a:25%;--b:50%;animation-delay:0.6s"></i><i style="--a:42.5%;--b:85%;animation-delay:0.75s"></i><i style="--a:30%;--b:60%;animation-delay:0.8999999999999999s"></i><i style="--a:47.5%;--b:95%;animation-delay:1.05s"></i></div>
     <div style="max-width:620px">
       <span class="eyebrow" style="color:var(--neon)">Ainda não trabalha com martelinho?</span>
       <h3 style="margin:10px 0 8px">Quer aprender martelinho de ouro?</h3>
@@ -509,7 +534,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radiu
 
 <footer><div class="w">
   <div><b style="color:var(--fg)">IPDRX · Martelinho Pro</b><br>Dúvidas: <a href="https://wa.me/5537999999921" target="_blank" rel="noopener">WhatsApp (37) 99999-9921</a> · <a href="mailto:ipdrmartelinho@gmail.com">ipdrmartelinho@gmail.com</a></div>
-  <nav><a href="legal/termos.html">Termos de Uso</a><a href="legal/privacidade.html">Privacidade</a><a href="legal/suporte.html">Suporte</a><a href="legal/excluir-conta.html">Excluir conta</a></nav>
+  <nav><a href="legal/termos.html">Termos de Uso</a><a href="legal/privacidade.html">Privacidade</a><a href="legal/suporte.html">Suporte</a></nav>
 </div></footer>
 
 <audio id="musica" src="img/musica.mp3" loop preload="none"></audio>
